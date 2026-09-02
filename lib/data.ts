@@ -450,9 +450,9 @@ export const faqs = [
 ];
 
 export const contactInfo = {
-  phone: "+92 310 7139610",
+  phone: "+92 318 4340349",
   email: "markvoro08@gmail.com",
-  whatsapp: "+923107139610",
+  whatsapp: "+923184340349",
 };
 
 export const serviceOptions = [
