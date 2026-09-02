@@ -2,9 +2,18 @@ import Image from "next/image";
 import { Instagram, Facebook, Linkedin, Youtube, Mail, Phone } from "lucide-react";
 import { navLinks, footerServices, footerAISolutions, contactInfo } from "@/lib/data";
 
+function TiktokIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M16.5 2h-3v13.5a3 3 0 1 1-3-3c.17 0 .34.01.5.04V9.4a6 6 0 1 0 5.5 5.98V8.79a8.16 8.16 0 0 0 4.5 1.35V7.14a5.15 5.15 0 0 1-4.5-5.06V2Z" />
+    </svg>
+  );
+}
+
 const socials = [
-  { icon: Instagram, label: "Instagram", href: "#" },
-  { icon: Facebook, label: "Facebook", href: "#" },
+  { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/markvoro610?igsh=MXB6dXh4b3d0aGt5OA==" },
+  { icon: Facebook, label: "Facebook", href: "https://www.facebook.com/share/1EXm8bCUVd/" },
+  { icon: TiktokIcon, label: "TikTok", href: "https://tiktok.com/@markvoro.digital" },
   { icon: Linkedin, label: "LinkedIn", href: "#" },
   { icon: Youtube, label: "YouTube", href: "#" },
 ];
@@ -40,6 +49,8 @@ export default function Footer() {
                 <a
                   key={s.label}
                   href={s.href}
+                  target={s.href === "#" ? undefined : "_blank"}
+                  rel={s.href === "#" ? undefined : "noopener noreferrer"}
                   aria-label={s.label}
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/60 transition-all duration-300 hover:border-white/20 hover:text-white"
                 >

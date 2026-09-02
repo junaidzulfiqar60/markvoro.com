@@ -106,7 +106,7 @@ export default function Contact() {
                 href={`https://wa.me/${contactInfo.whatsapp.replace(/\D/g, "")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary w-full"
+                className="btn-green w-full"
               >
                 <MessageCircle className="h-4 w-4" />
                 Chat on WhatsApp

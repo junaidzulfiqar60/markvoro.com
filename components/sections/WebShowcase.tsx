@@ -72,7 +72,7 @@ export default function WebShowcase() {
         </div>
 
         <div className="mt-14 flex justify-center">
-          <a href="#contact" className="btn-primary">
+          <a href="#contact" className="btn-green">
             Start Your Website Project
             <ArrowRight className="h-4 w-4" />
           </a>

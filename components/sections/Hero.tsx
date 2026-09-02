@@ -65,7 +65,7 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="mt-9 flex flex-col gap-4 sm:flex-row"
           >
-            <a href="#contact" className="btn-primary">
+            <a href="#contact" className="btn-green">
               Start Growing
               <ArrowRight className="h-4 w-4" />
             </a>

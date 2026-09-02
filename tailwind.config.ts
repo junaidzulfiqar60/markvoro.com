@@ -42,6 +42,7 @@ const config: Config = {
         glow: "0 0 60px -10px rgba(139,92,246,0.45)",
         "glow-cyan": "0 0 60px -10px rgba(34,211,238,0.45)",
         "glow-pink": "0 0 60px -10px rgba(236,72,153,0.45)",
+        "glow-green": "0 0 60px -10px rgba(34,197,94,0.55)",
         card: "0 8px 30px rgba(0,0,0,0.45)",
       },
       animation: {
