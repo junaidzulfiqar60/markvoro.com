@@ -36,14 +36,15 @@ export default function Navbar() {
     >
       <nav className="section-padding container-max flex h-20 items-center justify-between">
         <a href="#home" className="flex items-center gap-2" aria-label="MARKVORO home">
-          <Image
-            src="/logo.jpeg"
-            alt="MARKVORO logo"
-            width={180}
-            height={54}
-            priority
-            className="h-10 w-auto object-contain sm:h-12"
-          />
+          <div className="relative h-14 w-56 overflow-hidden sm:h-16 sm:w-64">
+            <Image
+              src="/logo.jpeg"
+              alt="MARKVORO logo"
+              fill
+              priority
+              className="object-cover object-center brightness-110 contrast-[1.1] saturate-150"
+            />
+          </div>
         </a>
 
         <ul className="hidden items-center gap-8 lg:flex">

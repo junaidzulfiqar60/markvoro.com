@@ -18,13 +18,14 @@ export default function Footer() {
       <div className="section-padding container-max relative py-16">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
-            <Image
-              src="/logo.jpeg"
-              alt="MARKVORO logo"
-              width={180}
-              height={54}
-              className="h-11 w-auto object-contain"
-            />
+            <div className="relative h-16 w-64 overflow-hidden">
+              <Image
+                src="/logo.jpeg"
+                alt="MARKVORO logo"
+                fill
+                className="object-cover object-center brightness-110 contrast-[1.1] saturate-150"
+              />
+            </div>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/50">
               A modern digital marketing and AI automation agency helping
               ambitious businesses grow through strategy, creativity and

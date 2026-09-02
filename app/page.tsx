@@ -20,8 +20,8 @@ export default function Home() {
       <main>
         <Hero />
         <TrustStrip />
-        <Services />
         <AIAgents />
+        <Services />
         <WhyChooseUs />
         <Process />
         <WebShowcase />

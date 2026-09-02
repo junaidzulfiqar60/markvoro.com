@@ -23,14 +23,6 @@ export default function Hero() {
       <div className="pointer-events-none absolute -left-40 top-0 -z-10 h-[32rem] w-[32rem] rounded-full bg-brand-purple/25 blur-[140px]" />
       <div className="pointer-events-none absolute -right-40 top-40 -z-10 h-[28rem] w-[28rem] rounded-full bg-brand-cyan/20 blur-[140px]" />
       <div className="pointer-events-none absolute bottom-0 left-1/3 -z-10 h-96 w-96 rounded-full bg-brand-pink/15 blur-[140px]" />
-      <div
-        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.05]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px)",
-          backgroundSize: "56px 56px",
-        }}
-      />
 
       <div className="section-padding container-max grid w-full grid-cols-1 items-center gap-16 lg:grid-cols-2">
         {/* Left copy */}

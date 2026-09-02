@@ -20,8 +20,8 @@ import {
 
 export const navLinks = [
   { label: "Home", href: "#home" },
-  { label: "Services", href: "#services" },
   { label: "AI Agents", href: "#ai-agents" },
+  { label: "Services", href: "#services" },
   { label: "About", href: "#why-us" },
   { label: "Process", href: "#process" },
   { label: "Contact", href: "#contact" },
