@@ -4,7 +4,15 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import type { AIAgent } from "@/lib/data";
 
-export default function AgentCard({ agent, index }: { agent: AIAgent; index: number }) {
+export default function AgentCard({
+  agent,
+  index,
+  onRequest,
+}: {
+  agent: AIAgent;
+  index: number;
+  onRequest?: () => void;
+}) {
   const Icon = agent.icon;
 
   return (
@@ -41,6 +49,16 @@ export default function AgentCard({ agent, index }: { agent: AIAgent; index: num
               </li>
             ))}
           </ul>
+        )}
+
+        {onRequest && (
+          <button
+            type="button"
+            onClick={onRequest}
+            className="relative mt-5 text-left text-xs font-semibold text-brand-cyan transition-colors hover:text-white"
+          >
+            Request this agent →
+          </button>
         )}
       </div>
     </motion.div>

@@ -1,16 +1,37 @@
-import { ArrowRight, ShoppingCart, UtensilsCrossed, Briefcase, UserRound } from "lucide-react";
+import {
+  ArrowRight,
+  ShoppingCart,
+  UtensilsCrossed,
+  Briefcase,
+  UserRound,
+  Code2,
+  Megaphone,
+  Palette,
+  Zap,
+  Bot,
+  MessageCircle,
+} from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
-import { webProjects } from "@/lib/data";
+import type { WebProject } from "@/lib/data";
+import { contactInfo } from "@/lib/data";
+import { buildWhatsAppUrl } from "@/lib/utils";
 
 const categoryIcons: Record<string, typeof ShoppingCart> = {
+  // Static placeholder categories (lib/data.ts fallback)
   "E-Commerce": ShoppingCart,
   Restaurant: UtensilsCrossed,
   "Corporate Business": Briefcase,
   "Personal Brand": UserRound,
+  // Real admin-managed PortfolioProject categories
+  "Website Development": Code2,
+  "Digital Marketing": Megaphone,
+  Branding: Palette,
+  "AI Automation": Zap,
+  "AI Agents": Bot,
 };
 
-export default function WebShowcase() {
+export default function WebShowcase({ projects }: { projects: WebProject[] }) {
   return (
     <section className="relative py-24 sm:py-32">
       <div className="section-padding container-max">
@@ -21,8 +42,8 @@ export default function WebShowcase() {
         />
 
         <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2">
-          {webProjects.map((project, i) => {
-            const Icon = categoryIcons[project.category];
+          {projects.map((project, i) => {
+            const Icon = categoryIcons[project.category] ?? Code2;
             return (
               <Reveal key={project.title} delay={i * 0.1}>
                 <div className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-all duration-500 hover:-translate-y-1.5 hover:border-white/20 hover:shadow-glow">
@@ -71,10 +92,19 @@ export default function WebShowcase() {
           })}
         </div>
 
-        <div className="mt-14 flex justify-center">
+        <div className="mt-14 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a href="#contact" className="btn-green">
             Start Your Website Project
             <ArrowRight className="h-4 w-4" />
+          </a>
+          <a
+            href={buildWhatsAppUrl(contactInfo.whatsapp, "Hi MARKVORO! I'd like to discuss a new website project.")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-secondary"
+          >
+            <MessageCircle className="h-4 w-4" />
+            Chat on WhatsApp
           </a>
         </div>
       </div>

@@ -1,11 +1,10 @@
-"use client";
-
 import SectionHeading from "@/components/ui/SectionHeading";
 import ServiceCard from "@/components/ui/ServiceCard";
 import GlowBackground from "@/components/ui/GlowBackground";
-import { services } from "@/lib/data";
+import ServicesQuoteCta from "@/components/sections/ServicesQuoteCta";
+import type { Service } from "@/lib/data";
 
-export default function Services() {
+export default function Services({ services }: { services: Service[] }) {
   return (
     <section id="services" className="relative py-24 sm:py-32">
       <GlowBackground />
@@ -21,6 +20,8 @@ export default function Services() {
             <ServiceCard key={service.name} service={service} index={i} />
           ))}
         </div>
+
+        <ServicesQuoteCta />
       </div>
     </section>
   );

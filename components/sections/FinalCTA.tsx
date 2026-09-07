@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, MessageCircle } from "lucide-react";
+import { contactInfo } from "@/lib/data";
+import { buildWhatsAppUrl } from "@/lib/utils";
 
 export default function FinalCTA() {
   return (
@@ -48,7 +50,12 @@ export default function FinalCTA() {
             Start Your Growth Journey
             <ArrowRight className="h-4 w-4" />
           </a>
-          <a href="#contact" className="btn-secondary">
+          <a
+            href={buildWhatsAppUrl(contactInfo.whatsapp, "Hello MARKVORO, I am interested in your digital services.")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-secondary"
+          >
             <MessageCircle className="h-4 w-4" />
             Chat With Us
           </a>

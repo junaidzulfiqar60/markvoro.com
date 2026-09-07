@@ -1,10 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Cpu } from "lucide-react";
+import { ArrowRight, Cpu, MessageCircle } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AgentCard from "@/components/ui/AgentCard";
-import { aiAgents } from "@/lib/data";
+import AIAgentInquiryModal from "@/components/forms/AIAgentInquiryModal";
+import { aiAgents, contactInfo } from "@/lib/data";
+import { buildWhatsAppUrl } from "@/lib/utils";
 
 const nodes = [
   { x: 10, y: 20 }, { x: 30, y: 8 }, { x: 55, y: 18 }, { x: 78, y: 10 }, { x: 92, y: 28 },
@@ -16,7 +19,20 @@ const edges: [number, number][] = [
   [0, 1], [1, 2], [2, 3], [3, 4], [1, 6], [6, 7], [7, 8], [5, 6], [6, 9], [7, 11], [9, 10], [10, 11], [11, 12], [2, 7],
 ];
 
+// aiAgents card names -> the AI Agent Inquiry form's exact option labels
+const AGENT_NAME_TO_FORM_OPTION: Record<string, string> = {
+  "AI Business Automation Agent": "Business Automation",
+};
+
 export default function AIAgents() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [prefillAgentType, setPrefillAgentType] = useState<string | undefined>(undefined);
+
+  const openModal = (agentType?: string) => {
+    setPrefillAgentType(agentType);
+    setModalOpen(true);
+  };
+
   return (
     <section id="ai-agents" className="relative overflow-hidden py-24 sm:py-32">
       {/* Neural network background */}
@@ -87,19 +103,42 @@ export default function AIAgents() {
           </div>
         </div>
 
-        <div className="mt-10 flex justify-center">
-          <a href="#contact" className="btn-green">
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <button type="button" onClick={() => openModal()} className="btn-green">
             Build Your AI Agent
             <ArrowRight className="h-4 w-4" />
+          </button>
+          <a
+            href={buildWhatsAppUrl(
+              contactInfo.whatsapp,
+              "Hi MARKVORO! I'm interested in building a custom AI agent for my business."
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-secondary"
+          >
+            <MessageCircle className="h-4 w-4" />
+            Chat on WhatsApp
           </a>
         </div>
 
         <div className="mt-20 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {aiAgents.map((agent, i) => (
-            <AgentCard key={agent.name} agent={agent} index={i} />
+            <AgentCard
+              key={agent.name}
+              agent={agent}
+              index={i}
+              onRequest={() => openModal(AGENT_NAME_TO_FORM_OPTION[agent.name] ?? agent.name)}
+            />
           ))}
         </div>
       </div>
+
+      <AIAgentInquiryModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        initialAgentType={prefillAgentType}
+      />
     </section>
   );
 }

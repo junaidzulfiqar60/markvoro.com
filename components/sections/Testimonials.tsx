@@ -4,9 +4,15 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { testimonials } from "@/lib/data";
+import type { Testimonial } from "@/lib/data";
 
-export default function Testimonials() {
+export default function Testimonials({
+  testimonials,
+  isPlaceholder = false,
+}: {
+  testimonials: Testimonial[];
+  isPlaceholder?: boolean;
+}) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -27,7 +33,11 @@ export default function Testimonials() {
         <SectionHeading
           eyebrow="Testimonials"
           title="WHAT BUSINESSES SAY"
-          description="Sample testimonials shown as placeholder content until real client testimonials are added."
+          description={
+            isPlaceholder
+              ? "Sample testimonials shown as placeholder content until real client testimonials are added."
+              : "Real feedback from businesses we've helped grow."
+          }
         />
 
         <div className="relative mx-auto mt-14 max-w-3xl">
@@ -50,7 +60,10 @@ export default function Testimonials() {
                   <div className="mt-8 flex items-center justify-between">
                     <div>
                       <p className="font-display font-semibold text-white">{active.name}</p>
-                      <p className="text-sm text-white/45">{active.business} · Sample Testimonial</p>
+                      <p className="text-sm text-white/45">
+                        {active.business}
+                        {isPlaceholder ? " · Sample Testimonial" : ""}
+                      </p>
                     </div>
                     <div className="flex gap-1">
                       {Array.from({ length: active.rating }).map((_, i) => (

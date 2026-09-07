@@ -4,7 +4,9 @@ import { FormEvent, useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MessageCircle, CheckCircle2, Send } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
+import Button from "@/components/ui/Button";
 import { contactInfo, serviceOptions } from "@/lib/data";
+import { buildWhatsAppUrl } from "@/lib/utils";
 
 type FormState = {
   name: string;
@@ -28,6 +30,8 @@ export default function Contact() {
   const [form, setForm] = useState<FormState>(initialState);
   const [errors, setErrors] = useState<Partial<FormState>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const update = (field: keyof FormState, value: string) => {
     setForm((f) => ({ ...f, [field]: value }));
@@ -49,12 +53,30 @@ export default function Contact() {
     return Object.keys(nextErrors).length === 0;
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setSubmitError(null);
     if (!validate()) return;
-    // Frontend-only demo: no backend submission is performed.
-    setSubmitted(true);
-    setForm(initialState);
+
+    setLoading(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setSubmitError(data.error || "Something went wrong. Please try again.");
+        return;
+      }
+      setSubmitted(true);
+      setForm(initialState);
+    } catch {
+      setSubmitError("Network error. Please check your connection and try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const inputClass =
@@ -103,7 +125,7 @@ export default function Contact() {
               </a>
 
               <a
-                href={`https://wa.me/${contactInfo.whatsapp.replace(/\D/g, "")}`}
+                href={buildWhatsAppUrl(contactInfo.whatsapp, "Hi MARKVORO! I'd like to talk about growing my business.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-green w-full"
@@ -129,9 +151,8 @@ export default function Contact() {
                   Message Sent!
                 </h3>
                 <p className="mt-3 max-w-sm text-sm text-white/55">
-                  Thanks for reaching out. This is a frontend demo — no data
-                  was actually submitted. Our team will get back to you soon
-                  once a backend is connected.
+                  Thanks for reaching out — we&apos;ve received your message
+                  and our team will get back to you within 24 hours.
                 </p>
                 <button
                   type="button"
@@ -248,10 +269,12 @@ export default function Contact() {
                   {errors.message && <p className="mt-1.5 text-xs text-brand-pink">{errors.message}</p>}
                 </div>
 
-                <button type="submit" className="btn-primary w-full">
+                {submitError && <p className="text-sm text-brand-pink">{submitError}</p>}
+
+                <Button type="submit" loading={loading} className="w-full">
                   Send Message
                   <Send className="h-4 w-4" />
-                </button>
+                </Button>
               </form>
             )}
           </div>

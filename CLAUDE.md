@@ -4,14 +4,15 @@ This file gives Claude Code guidance for working in this repository.
 
 ## Project
 
-MARKVORO — a frontend-only marketing website for a digital marketing, web
-development and AI automation agency. Premium dark UI with a multicolor
+MARKVORO — a marketing website and admin backend for a digital marketing,
+web development and AI automation agency. Premium dark UI with a multicolor
 gradient system inspired by the MARKVORO logo (blue, cyan, green, purple,
 pink, orange).
 
-There is intentionally no backend, database, auth, or payment integration.
-The contact form is client-side only (validation + success state, no
-submission).
+The site has a full backend: PostgreSQL via Prisma, a custom JWT-based admin
+auth system, an admin dashboard for managing leads/inquiries/content, Resend
+for transactional email, and Cloudinary for image uploads. See
+[README.md](README.md) for full setup and API documentation.
 
 ## Tech Stack
 
@@ -19,6 +20,12 @@ submission).
 - Styling: Tailwind CSS (custom `brand` color palette + gradient utilities in `app/globals.css`)
 - Animation: Framer Motion
 - Icons: Lucide React
+- Database: PostgreSQL via Prisma ORM
+- Auth: custom JWT (bcryptjs + jose) via `middleware.ts` + httpOnly cookie — not NextAuth
+- Validation: Zod
+- Email: Resend
+- File uploads: Cloudinary
+- Charts (admin dashboard): Recharts
 - Package manager: npm
 
 ## Commands
@@ -26,6 +33,11 @@ submission).
 ```bash
 # install dependencies
 npm install
+
+# database
+npx prisma migrate dev   # apply schema changes locally
+npx prisma db seed       # seed the first admin user + sample services
+npx prisma studio        # browse the database
 
 # run dev server
 npm run dev
@@ -40,25 +52,36 @@ npm run lint
 
 ## Structure
 
-- `app/page.tsx` — assembles all homepage sections in order.
+- `app/page.tsx` — assembles all homepage sections; fetches Services/Portfolio/Testimonials from the DB (falls back to `lib/data.ts` static arrays if a table is empty).
 - `app/layout.tsx` — fonts (Inter/Sora), metadata, global CSS import.
+- `app/api/` — public API routes (`contact`, `service-inquiry`, `ai-inquiry`, `newsletter/*`, `services`, `portfolio`, `testimonials`) and `app/api/admin/` (auth + CRUD, all behind `requireAdmin`).
+- `app/admin/login/` — public admin login page.
+- `app/admin/(dashboard)/` — authenticated admin dashboard route group (overview, leads, ai-inquiries, service-inquiries, portfolio, testimonials, services, newsletter, settings).
+- `middleware.ts` — guards `/admin/*` and `/api/admin/*` (except `/admin/login`).
 - `components/layout/` — `Navbar.tsx`, `Footer.tsx`.
 - `components/sections/` — one component per homepage section (Hero, Services, AIAgents, Process, Contact, etc.).
-- `components/ui/` — reusable primitives (`Button`, `SectionHeading`, `ServiceCard`, `AgentCard`, `Counter`, `Reveal`, `GlowBackground`).
-- `lib/data.ts` — nearly all site copy (services, AI agents, testimonials, FAQ, contact info, nav links). Prefer editing here over hardcoding text in components.
-- `public/logo.jpeg` — MARKVORO logo, used in Navbar and Footer.
+- `components/ui/` — reusable primitives (`Button`, `Modal`, `SectionHeading`, `ServiceCard`, `AgentCard`, `Counter`, `Reveal`, `GlowBackground`).
+- `components/forms/` — public inquiry modals (`AIAgentInquiryModal`, `ServiceInquiryModal`).
+- `components/admin/` — admin dashboard building blocks (`AdminShell`, `DataTable`, `FilterBar`, `StatusBadge`, `ConfirmDialog`, `StatCard`, `MonthlyChart`, `ImageUploader`).
+- `lib/data.ts` — static fallback site copy (services, AI agents, testimonials, FAQ, contact info, nav links). Prefer editing here for content not yet migrated to the DB.
+- `lib/auth.ts` / `lib/auth-server.ts` — session signing/verification (Edge-safe core + Node-only server helpers, split because `middleware.ts` runs on the Edge runtime and can't use bcrypt or `next/headers`).
+- `lib/prisma.ts`, `lib/validations.ts`, `lib/email.ts`, `lib/emailTemplates.ts`, `lib/cloudinary.ts`, `lib/rateLimit.ts`, `lib/iconMap.ts` — backend infrastructure.
+- `prisma/schema.prisma`, `prisma/seed.ts` — database schema and seed script.
+- `public/logo.jpeg` — MARKVORO logo, used in Navbar, Footer, and the admin login/sidebar.
 
-See [README.md](README.md) for the full content-editing map (which field in `lib/data.ts` maps to which section).
+See [README.md](README.md) for the full content-editing map and API reference.
 
 ## Conventions
 
-- Content lives in `lib/data.ts`, not inline in components — new copy/services/agents should be added there and mapped through existing card components.
+- Public form submissions are validated with Zod (`lib/validations.ts`) on both client and server; API routes never leak raw DB errors to the client.
+- Content lives in `lib/data.ts` as a static fallback — `services`, `webProjects` (portfolio) and `testimonials` are DB-backed and admin-editable via `/admin/*`; the homepage falls back to `lib/data.ts` only when the corresponding table is empty.
 - Section components live in `components/sections/`, one file per homepage section, composed in `app/page.tsx`.
-- Reusable visual primitives (cards, headings, buttons, scroll-reveal wrapper) live in `components/ui/` — reuse them instead of duplicating markup.
-- Brand colors/gradients/animations are centralized in `tailwind.config.ts` (`colors.brand`, `backgroundImage`, `keyframes`) and `app/globals.css` (`.text-gradient`, `.glass`, `.gradient-border`, `.btn-primary`/`.btn-secondary`).
-- Placeholder content (testimonials, showcase projects, stats) is clearly commented in `lib/data.ts` and the README — do not present it as real client data.
+- Reusable visual primitives (cards, headings, buttons, scroll-reveal wrapper, modal) live in `components/ui/` — reuse them instead of duplicating markup.
+- Brand colors/gradients/animations are centralized in `tailwind.config.ts` (`colors.brand`, `backgroundImage`, `keyframes`) and `app/globals.css` (`.text-gradient`, `.glass`, `.gradient-border`, `.btn-primary`/`.btn-secondary`/`.btn-green`). The admin dashboard reuses these same tokens rather than a generic admin template.
+- Prisma enum `@map()` only renames the DB storage label, not the JS-side value — `lib/validations.ts` exports `*_TO_ENUM`/`*_FROM_ENUM` lookup maps to bridge human-readable labels (used in Zod schemas/UI) and actual Prisma enum keys. Always go through these maps when writing/reading `category`/`agentType` fields.
 
 ## Notes
 
-- Frontend-only by design — do not add a backend/API/database unless explicitly asked.
+- Backend added 2026-09-03 (Postgres/Prisma, custom JWT admin auth, Resend email, Cloudinary uploads) — see README for full architecture and API reference.
+- Don't add further unrequested backend systems (new auth providers, DB providers, third-party integrations) without being explicitly asked.
 - Full build initialized 2026-09-02.
