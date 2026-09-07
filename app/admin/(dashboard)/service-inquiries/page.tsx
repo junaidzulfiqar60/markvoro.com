@@ -202,7 +202,9 @@ export default function ServiceInquiriesPage() {
       <ConfirmDialog
         open={!!confirmDeleteId}
         onClose={() => setConfirmDeleteId(null)}
-        onConfirm={() => confirmDeleteId && remove(confirmDeleteId)}
+        onConfirm={() => {
+          if (confirmDeleteId) return remove(confirmDeleteId);
+        }}
         title="Delete this inquiry?"
         description="This will permanently remove the inquiry and its notes."
       />

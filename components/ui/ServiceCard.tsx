@@ -2,9 +2,10 @@
 
 import { motion } from "framer-motion";
 import type { Service } from "@/lib/data";
+import { resolveIcon } from "@/lib/iconMap";
 
 export default function ServiceCard({ service, index }: { service: Service; index: number }) {
-  const Icon = service.icon;
+  const Icon = resolveIcon(service.icon);
 
   return (
     <motion.div

@@ -202,7 +202,9 @@ export default function LeadsPage() {
       <ConfirmDialog
         open={!!confirmDeleteId}
         onClose={() => setConfirmDeleteId(null)}
-        onConfirm={() => confirmDeleteId && deleteLead(confirmDeleteId)}
+        onConfirm={() => {
+          if (confirmDeleteId) return deleteLead(confirmDeleteId);
+        }}
         title="Delete this lead?"
         description="This will permanently remove the lead and its notes."
       />

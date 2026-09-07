@@ -1,14 +1,4 @@
 import {
-  Share2,
-  Megaphone,
-  Search,
-  PenTool,
-  Palette,
-  Code2,
-  Mail,
-  Users,
-  Star,
-  Sparkles,
   TrendingUp,
   MessageCircle,
   CalendarCheck,
@@ -29,7 +19,11 @@ export const navLinks = [
 
 export type Service = {
   number: string;
-  icon: LucideIcon;
+  // Icon *name* (a key in lib/iconMap.ts's ICON_MAP), not a component
+  // reference — this type is passed from server components down into
+  // client components (ServiceCard), and React Server Components cannot
+  // serialize function values across that boundary.
+  icon: string;
   name: string;
   description: string;
   features: string[];
@@ -38,7 +32,7 @@ export type Service = {
 export const services: Service[] = [
   {
     number: "01",
-    icon: Share2,
+    icon: "Share2",
     name: "Social Media Marketing",
     description:
       "Build a powerful social media presence with strategic content, community engagement, content planning and high-performing campaigns.",
@@ -53,7 +47,7 @@ export const services: Service[] = [
   },
   {
     number: "02",
-    icon: Megaphone,
+    icon: "Megaphone",
     name: "Meta & Google Ads",
     description:
       "Performance-driven paid advertising campaigns engineered to reach the right audience and convert them into customers.",
@@ -69,7 +63,7 @@ export const services: Service[] = [
   },
   {
     number: "03",
-    icon: Search,
+    icon: "Search",
     name: "Search Engine Optimization",
     description:
       "Rank higher, get discovered and drive consistent organic traffic with technical, local and content-driven SEO.",
@@ -84,7 +78,7 @@ export const services: Service[] = [
   },
   {
     number: "04",
-    icon: PenTool,
+    icon: "PenTool",
     name: "Content Marketing",
     description:
       "Compelling content that informs, engages and converts — crafted for every stage of your customer journey.",
@@ -99,7 +93,7 @@ export const services: Service[] = [
   },
   {
     number: "05",
-    icon: Palette,
+    icon: "Palette",
     name: "Branding & Creative Design",
     description:
       "Distinct, premium visual identities that make your business instantly recognizable across every channel.",
@@ -114,7 +108,7 @@ export const services: Service[] = [
   },
   {
     number: "06",
-    icon: Code2,
+    icon: "Code2",
     name: "Website Design & Development",
     description:
       "Fast, modern and conversion-focused websites built to turn visitors into loyal customers.",
@@ -129,7 +123,7 @@ export const services: Service[] = [
   },
   {
     number: "07",
-    icon: Mail,
+    icon: "Mail",
     name: "Email Marketing",
     description:
       "Automated email journeys that nurture leads, retain customers and drive repeat revenue.",
@@ -144,7 +138,7 @@ export const services: Service[] = [
   },
   {
     number: "08",
-    icon: Users,
+    icon: "Users",
     name: "Affiliate Marketing",
     description:
       "Scalable partner and affiliate programs that extend your reach and reward performance.",
@@ -157,7 +151,7 @@ export const services: Service[] = [
   },
   {
     number: "09",
-    icon: Star,
+    icon: "Star",
     name: "Influencer Marketing",
     description:
       "Connect with the right voices to build authentic trust and awareness for your brand.",
@@ -171,7 +165,7 @@ export const services: Service[] = [
   },
   {
     number: "10",
-    icon: Sparkles,
+    icon: "Sparkles",
     name: "AI Content Creation",
     description:
       "Scale your content production using cutting-edge AI tools for video, image, voice and copy.",

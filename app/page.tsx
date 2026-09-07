@@ -13,7 +13,6 @@ import FAQ from "@/components/sections/FAQ";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Contact from "@/components/sections/Contact";
 import { prisma } from "@/lib/prisma";
-import { resolveIcon } from "@/lib/iconMap";
 import { PORTFOLIO_CATEGORY_FROM_ENUM } from "@/lib/validations";
 import {
   services as staticServices,
@@ -41,7 +40,7 @@ async function getServices(): Promise<Service[]> {
     if (rows.length === 0) return staticServices;
     return rows.map((row, i) => ({
       number: String(row.order || i + 1).padStart(2, "0"),
-      icon: resolveIcon(row.icon),
+      icon: row.icon,
       name: row.title,
       description: row.shortDescription,
       features: row.features,

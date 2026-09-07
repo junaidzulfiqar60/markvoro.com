@@ -154,7 +154,9 @@ export default function NewsletterPage() {
       <ConfirmDialog
         open={!!confirmDeleteId}
         onClose={() => setConfirmDeleteId(null)}
-        onConfirm={() => confirmDeleteId && remove(confirmDeleteId)}
+        onConfirm={() => {
+          if (confirmDeleteId) return remove(confirmDeleteId);
+        }}
         title="Remove this subscriber?"
         description="This will permanently delete the subscriber record."
       />
