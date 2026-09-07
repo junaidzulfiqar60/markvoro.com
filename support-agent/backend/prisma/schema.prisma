@@ -1,0 +1,310 @@
+// MARKVORO AI Support Agent — Phase 1 MVP schema
+// Separate database from the marketing site (see ../.env DATABASE_URL).
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [vector]
+}
+
+// ---------- Enums ----------
+
+enum AdminRole {
+  SUPER_ADMIN
+  CLIENT_ADMIN
+  SUPPORT_MANAGER
+  SUPPORT_AGENT
+  SALES_AGENT
+}
+
+enum ConversationPlatform {
+  WEB
+  WHATSAPP
+  MESSENGER
+  INSTAGRAM
+  EMAIL
+}
+
+enum ConversationMode {
+  AI
+  HUMAN
+}
+
+enum ConversationStatus {
+  OPEN
+  CLOSED
+  ESCALATED
+}
+
+enum MessageSender {
+  CUSTOMER
+  AI
+  HUMAN_AGENT
+}
+
+enum LeadStatus {
+  NEW
+  QUALIFIED
+  CONVERTED
+  LOST
+}
+
+enum LeadSource {
+  AI_AGENT
+  CONTACT_FORM
+  WHATSAPP
+  MANUAL
+}
+
+enum DocumentStatus {
+  PROCESSING
+  READY
+  FAILED
+}
+
+enum ClientPlan {
+  STARTER
+  BUSINESS
+  ENTERPRISE
+}
+
+enum ClientStatus {
+  ACTIVE
+  SUSPENDED
+  TRIAL
+}
+
+enum TicketPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
+enum AppointmentStatus {
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+// ---------- Models ----------
+
+model Client {
+  id           String       @id @default(cuid())
+  businessName String
+  contactEmail String
+  contactPhone String?
+  plan         ClientPlan   @default(STARTER)
+  status       ClientStatus @default(TRIAL)
+
+  // Public key used by the embeddable web widget to identify this tenant.
+  widgetKey String @unique @default(cuid())
+
+  // Per-tenant AI behavior: { provider, model, tone, language, systemPromptExtra, escalationKeywords: string[] }
+  aiConfig Json @default("{}")
+
+  // Encrypted channel credentials, e.g. { whatsapp: { wabaId, phoneNumberId, accessTokenEnc } }
+  channels Json @default("{}")
+
+  // Weekly availability for book_appointment, e.g. { "mon": ["09:00","18:00"], "sun": null }
+  businessHours Json @default("{}")
+  // Order-lookup integration for check_order_status, e.g. { "provider": "shopify", "shopDomain": "...", "accessTokenEnc": "..." }
+  orderSystem Json @default("{}")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  adminUsers    AdminUser[]
+  customers     Customer[]
+  conversations Conversation[]
+  documents     KnowledgeBaseDocument[]
+  leads         Lead[]
+  tickets       SupportTicket[]
+  appointments  Appointment[]
+}
+
+model AdminUser {
+  id           String    @id @default(cuid())
+  clientId     String? // null for MARKVORO Super Admin
+  client       Client?   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  name         String
+  email        String    @unique
+  passwordHash String
+  role         AdminRole @default(CLIENT_ADMIN)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  assignedConversations Conversation[] @relation("AssignedAgent")
+  assignedLeads         Lead[]         @relation("AssignedSales")
+  assignedTickets       SupportTicket[] @relation("AssignedTicketAgent")
+
+  @@index([clientId])
+}
+
+model Customer {
+  id          String    @id @default(cuid())
+  clientId    String
+  client      Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  name        String?
+  phone       String?
+  email       String?
+  // { whatsapp: "+92...", instagramPsid: "...", messengerPsid: "..." }
+  platformIds Json      @default("{}")
+  leadStatus  LeadStatus @default(NEW)
+  optInAt     DateTime?
+  createdAt   DateTime  @default(now())
+
+  conversations Conversation[]
+  leads         Lead[]
+  tickets       SupportTicket[]
+  appointments  Appointment[]
+
+  @@unique([clientId, phone])
+  @@index([clientId])
+}
+
+model Conversation {
+  id         String               @id @default(cuid())
+  clientId   String
+  client     Client               @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  customerId String
+  customer   Customer             @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  platform   ConversationPlatform @default(WEB)
+  mode       ConversationMode     @default(AI)
+  status     ConversationStatus   @default(OPEN)
+
+  assignedAgentId String?
+  assignedAgent   AdminUser? @relation("AssignedAgent", fields: [assignedAgentId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  messages Message[]
+
+  @@index([clientId, status])
+  @@index([clientId, createdAt])
+}
+
+model Message {
+  id             String        @id @default(cuid())
+  conversationId String
+  conversation   Conversation  @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  sender         MessageSender
+  content        String
+  messageType    String        @default("text") // text | image | document | template
+  platform       ConversationPlatform
+  createdAt      DateTime      @default(now())
+
+  @@index([conversationId, createdAt])
+}
+
+model KnowledgeBaseDocument {
+  id         String         @id @default(cuid())
+  clientId   String
+  client     Client         @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  title      String
+  sourceType String // pdf | docx | url | faq | manual
+  rawText    String?
+  status     DocumentStatus @default(PROCESSING)
+  createdAt  DateTime       @default(now())
+
+  chunks KbChunk[]
+
+  @@index([clientId])
+}
+
+model KbChunk {
+  id         String                @id @default(cuid())
+  documentId String
+  document   KnowledgeBaseDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  clientId   String
+  chunkText  String
+  embedding  Unsupported("vector(1536)")?
+
+  @@index([clientId])
+}
+
+model Lead {
+  id         String     @id @default(cuid())
+  clientId   String
+  client     Client     @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  customerId String
+  customer   Customer   @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  name       String
+  phone      String?
+  email      String?
+  requirement String
+  source     LeadSource @default(AI_AGENT)
+  score      Int        @default(0)
+  status     LeadStatus @default(NEW)
+
+  assignedToId String?
+  assignedTo   AdminUser? @relation("AssignedSales", fields: [assignedToId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([clientId, status])
+}
+
+model SupportTicket {
+  id           String         @id @default(cuid())
+  ticketNumber String         @unique
+  clientId     String
+  client       Client         @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  customerId   String
+  customer     Customer       @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  description  String
+  priority     TicketPriority @default(NORMAL)
+  status       TicketStatus   @default(OPEN)
+
+  assignedToId String?
+  assignedTo   AdminUser? @relation("AssignedTicketAgent", fields: [assignedToId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([clientId, status])
+}
+
+model Appointment {
+  id              String            @id @default(cuid())
+  clientId        String
+  client          Client            @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  customerId      String
+  customer        Customer          @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  service         String
+  scheduledAt     DateTime
+  durationMinutes Int               @default(30)
+  status          AppointmentStatus @default(CONFIRMED)
+  notes           String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([clientId, scheduledAt])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  actorId   String?
+  action    String
+  target    String?
+  clientId  String?
+  metadata  Json     @default("{}")
+  createdAt DateTime @default(now())
+
+  @@index([clientId, createdAt])
+}

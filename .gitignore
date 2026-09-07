@@ -24,3 +24,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# support-agent subproject (separate NestJS backend + Vite apps)
+support-agent/**/node_modules
+support-agent/**/dist
+support-agent/**/.env
