@@ -55,6 +55,78 @@ function chunkText(text: string, maxChars = 1800): string[] {
     }, []);
 }
 
+const MARKVORO_SERVICES = [
+  { name: "Social Media Marketing", description: "Instagram, Facebook and TikTok marketing — strategic content, community engagement and high-performing campaigns." },
+  { name: "Meta & Google Ads", description: "Performance-driven paid advertising across Facebook, Instagram, Google Search, Display and YouTube, with full conversion tracking." },
+  { name: "Search Engine Optimization", description: "Technical, local and content-driven SEO — keyword research, on-page and technical SEO, Google Business optimization, link building." },
+  { name: "Content Marketing", description: "Blog writing, copywriting, social content, video scripts and AI-powered content production." },
+  { name: "Branding & Creative Design", description: "Logo design, brand identity, social graphics, advertising creatives and brand guidelines." },
+  { name: "Website Design & Development", description: "Fast, modern, conversion-focused business websites, landing pages and e-commerce websites." },
+  { name: "Email Marketing", description: "Automated email journeys, newsletter design, lead nurturing and audience segmentation." },
+  { name: "Affiliate & Influencer Marketing", description: "Partner and affiliate program setup plus influencer outreach and UGC campaigns." },
+  { name: "AI Content Creation", description: "AI video generation, AI image creation, AI voiceovers and AI-powered advertising creatives." },
+  { name: "AI Agents & Business Automation", description: "Custom AI Sales, Support, Booking, WhatsApp and Receptionist agents, plus full workflow automation." },
+];
+
+const MARKVORO_FAQS = [
+  { q: "What services does MARKVORO provide?", a: "MARKVORO offers social media marketing, Meta & Google Ads, SEO, content marketing, branding, website design & development, email marketing, affiliate & influencer marketing, and AI agent development / business automation." },
+  { q: "Can you manage our social media?", a: "Yes — strategy, content creation, community management and campaign planning across Instagram, Facebook, TikTok and more." },
+  { q: "Do you run Facebook and Google ads?", a: "Yes. We build, launch and optimize paid campaigns across Meta and Google (search, display, YouTube) with full conversion tracking." },
+  { q: "Can MARKVORO build a website for my business?", a: "Yes — fast, modern, responsive websites, from business sites and landing pages to full e-commerce experiences." },
+  { q: "What is an AI agent, and can you build one for my business?", a: "An AI agent is an intelligent assistant trained on your business information that responds to leads, answers customer questions, books appointments and automates repetitive tasks 24/7. We design AI agents tailored to your workflow — sales, support, booking, WhatsApp or full business automation." },
+  { q: "How long does it take to build a website?", a: "Most business websites and landing pages are completed within a few weeks from discovery to launch, depending on scope." },
+  { q: "Do you work with businesses outside Pakistan?", a: "Yes — MARKVORO works with ambitious businesses globally, delivering remote-friendly digital marketing, web development and AI automation services." },
+  { q: "How do I get started or book a call?", a: "Reach out through the contact form on this site, WhatsApp, or email at markvoro08@gmail.com. We'll schedule a discovery call to understand your business and recommend the right growth strategy." },
+  { q: "What are your contact details?", a: "Phone/WhatsApp: +92 318 4340349. Email: markvoro08@gmail.com." },
+];
+
+async function seedFaqDocument(clientId: string, rawText: string) {
+  const existingDoc = await prisma.knowledgeBaseDocument.findFirst({
+    where: { clientId, title: "Frequently Asked Questions" },
+  });
+  if (existingDoc) return;
+
+  const doc = await prisma.knowledgeBaseDocument.create({
+    data: {
+      clientId,
+      title: "Frequently Asked Questions",
+      sourceType: "faq",
+      rawText,
+      status: "PROCESSING",
+    },
+  });
+
+  const chunks = chunkText(rawText);
+  const vectors = await embedIfConfigured(chunks);
+
+  for (let i = 0; i < chunks.length; i++) {
+    const id = randomUUID();
+    if (vectors) {
+      await prisma.$executeRawUnsafe(
+        `INSERT INTO "KbChunk" (id, "documentId", "clientId", "chunkText", embedding)
+         VALUES ($1, $2, $3, $4, $5::vector)`,
+        id,
+        doc.id,
+        clientId,
+        chunks[i],
+        `[${vectors[i].join(",")}]`,
+      );
+    } else {
+      await prisma.$executeRawUnsafe(
+        `INSERT INTO "KbChunk" (id, "documentId", "clientId", "chunkText", embedding)
+         VALUES ($1, $2, $3, $4, NULL)`,
+        id,
+        doc.id,
+        clientId,
+        chunks[i],
+      );
+    }
+  }
+
+  await prisma.knowledgeBaseDocument.update({ where: { id: doc.id }, data: { status: "READY" } });
+  console.log(`[seed] Seeded ${chunks.length} FAQ chunk(s)${vectors ? " with embeddings" : " (keyword-only — set OPENAI_API_KEY for semantic search)"}.`);
+}
+
 async function main() {
   const superAdminEmail = process.env.SEED_SUPER_ADMIN_EMAIL;
   const superAdminPassword = process.env.SEED_SUPER_ADMIN_PASSWORD;
@@ -107,51 +179,54 @@ async function main() {
   }
   console.log(`[seed] Demo client ready: ${client.businessName} (widgetKey: ${client.widgetKey})`);
   console.log(`[seed] Demo Client Admin login: ${demoAdminEmail} / ${demoAdminPassword}`);
+  await seedFaqDocument(client.id, DEMO_FAQ);
 
-  const existingDoc = await prisma.knowledgeBaseDocument.findFirst({
-    where: { clientId: client.id, title: "Frequently Asked Questions" },
-  });
-  if (!existingDoc) {
-    const doc = await prisma.knowledgeBaseDocument.create({
+  // MARKVORO's own client record — the agency dogfoods the product by running
+  // its own AI support agent on markvoro.com (see components/SupportWidget.tsx).
+  const markvoroAdminEmail = "admin@markvoro.com";
+  let markvoroClient = await prisma.client.findFirst({ where: { businessName: "MARKVORO" } });
+  if (!markvoroClient) {
+    markvoroClient = await prisma.client.create({
       data: {
-        clientId: client.id,
-        title: "Frequently Asked Questions",
-        sourceType: "faq",
-        rawText: DEMO_FAQ,
-        status: "PROCESSING",
+        businessName: "MARKVORO",
+        contactEmail: "markvoro08@gmail.com",
+        contactPhone: "+923184340349",
+        plan: "ENTERPRISE",
+        status: "ACTIVE",
+        aiConfig: {
+          provider: "anthropic",
+          tone: "confident, friendly and knowledgeable — like a helpful growth consultant, never pushy",
+          language: "auto",
+          systemPromptExtra:
+            "You are the live chat assistant on the MARKVORO marketing website (markvoro.com). MARKVORO is a premium digital marketing, web development and AI automation agency. Answer questions about services, pricing approach (custom quotes, no fixed public pricing), AI agents, and how to get started. Always try to capture the visitor's name, email/WhatsApp and what they need help with as a lead if they show real interest.",
+        },
       },
     });
-
-    const chunks = chunkText(DEMO_FAQ);
-    const vectors = await embedIfConfigured(chunks);
-
-    for (let i = 0; i < chunks.length; i++) {
-      const id = randomUUID();
-      if (vectors) {
-        await prisma.$executeRawUnsafe(
-          `INSERT INTO "KbChunk" (id, "documentId", "clientId", "chunkText", embedding)
-           VALUES ($1, $2, $3, $4, $5::vector)`,
-          id,
-          doc.id,
-          client.id,
-          chunks[i],
-          `[${vectors[i].join(",")}]`,
-        );
-      } else {
-        await prisma.$executeRawUnsafe(
-          `INSERT INTO "KbChunk" (id, "documentId", "clientId", "chunkText", embedding)
-           VALUES ($1, $2, $3, $4, NULL)`,
-          id,
-          doc.id,
-          client.id,
-          chunks[i],
-        );
-      }
-    }
-
-    await prisma.knowledgeBaseDocument.update({ where: { id: doc.id }, data: { status: "READY" } });
-    console.log(`[seed] Seeded ${chunks.length} FAQ chunk(s)${vectors ? " with embeddings" : " (keyword-only — set OPENAI_API_KEY for semantic search)"}.`);
   }
+  console.log(`[seed] MARKVORO client ready (widgetKey: ${markvoroClient.widgetKey})`);
+  console.log(`[seed] >>> Use this widgetKey in components/SupportWidget.tsx: ${markvoroClient.widgetKey}`);
+
+  if (!(await prisma.adminUser.findUnique({ where: { email: markvoroAdminEmail } }))) {
+    await prisma.adminUser.create({
+      data: {
+        name: "MARKVORO Admin",
+        email: markvoroAdminEmail,
+        passwordHash: superAdminHash,
+        role: "CLIENT_ADMIN",
+        clientId: markvoroClient.id,
+      },
+    });
+    console.log(`[seed] MARKVORO Client Admin login: ${markvoroAdminEmail} (same password as Super Admin)`);
+  }
+
+  const markvoroFaqText = [
+    "# MARKVORO Services",
+    ...MARKVORO_SERVICES.map((s) => `- ${s.name}: ${s.description}`),
+    "",
+    "# Frequently Asked Questions",
+    ...MARKVORO_FAQS.map((f) => `Q: ${f.q}\nA: ${f.a}`),
+  ].join("\n\n");
+  await seedFaqDocument(markvoroClient.id, markvoroFaqText);
 }
 
 main()

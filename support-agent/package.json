@@ -1,0 +1,9 @@
+{
+  "name": "markvoro-support-agent",
+  "private": true,
+  "description": "Railway build orchestration: builds the widget, copies it into the backend's public/ folder, then builds the backend. Deployed with rootDirectory=support-agent.",
+  "scripts": {
+    "build": "npm install --prefix backend && npm install --prefix widget && npm run build --prefix widget && node -e \"const fs=require('fs');fs.mkdirSync('backend/public',{recursive:true});fs.copyFileSync('widget/dist/widget.js','backend/public/widget.js');\" && npm run build --prefix backend",
+    "start": "node backend/dist/src/main.js"
+  }
+}
