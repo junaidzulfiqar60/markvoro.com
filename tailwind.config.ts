@@ -29,6 +29,7 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
         display: ["var(--font-display)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       backgroundImage: {
         "brand-gradient":
@@ -55,6 +56,7 @@ const config: Config = {
         "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         marquee: "marquee 30s linear infinite",
         "border-spin": "border-spin 4s linear infinite",
+        "hud-scan": "hud-scan 3.5s linear infinite",
       },
       keyframes: {
         "gradient-x": {
@@ -71,6 +73,10 @@ const config: Config = {
         },
         "border-spin": {
           "100%": { transform: "rotate(360deg)" },
+        },
+        "hud-scan": {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(100%)" },
         },
       },
       backgroundSize: {

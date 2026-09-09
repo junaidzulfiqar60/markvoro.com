@@ -30,10 +30,19 @@ export default function AgentCard({
           <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-gradient bg-300% shadow-glow transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
             <Icon className="h-6 w-6 text-white" strokeWidth={1.6} />
           </div>
-          <ArrowUpRight className="h-5 w-5 text-white/20 transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-white/60" />
+          <div className="flex items-center gap-2">
+            <span className="status-pill-live">
+              <span className="h-1 w-1 rounded-full bg-brand-green" />
+              Online
+            </span>
+            <ArrowUpRight className="h-5 w-5 text-white/20 transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-white/60" />
+          </div>
         </div>
 
-        <h3 className="relative mt-6 font-display text-lg font-semibold text-white">
+        <p className="eyebrow-mono relative mt-6 text-brand-cyan/50">
+          Agent · {String(index + 1).padStart(2, "0")}
+        </p>
+        <h3 className="relative mt-1.5 font-display text-lg font-semibold text-white">
           {agent.name}
         </h3>
         <p className="relative mt-3 text-sm leading-relaxed text-white/55">

@@ -44,7 +44,7 @@ export default function Counter({ value }: { value: string }) {
       initial={{ opacity: 0 }}
       animate={inView ? { opacity: 1 } : {}}
       transition={{ duration: 0.4 }}
-      className="text-gradient font-display text-4xl font-bold sm:text-5xl"
+      className="text-gradient font-mono text-4xl font-bold tabular-nums sm:text-5xl"
     >
       {display}
     </motion.span>

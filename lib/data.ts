@@ -9,12 +9,15 @@ import {
 } from "lucide-react";
 
 export const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "AI Agents", href: "#ai-agents" },
-  { label: "Services", href: "#services" },
-  { label: "About", href: "#why-us" },
-  { label: "Process", href: "#process" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Solutions", href: "/solutions" },
+  { label: "AI Agents", href: "/ai-agents" },
+  { label: "Automations", href: "/automations" },
+  { label: "Industries", href: "/industries" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export type Service = {
@@ -477,4 +480,181 @@ export const footerAISolutions = [
   "AI WhatsApp Agents",
   "AI Booking Agents",
   "Business Automation",
+];
+
+export type Industry = {
+  name: string;
+  useCase: string;
+  description: string;
+};
+
+export const industries: Industry[] = [
+  {
+    name: "Real Estate",
+    useCase: "Instant enquiry qualification",
+    description:
+      "An AI agent responds to portal, WhatsApp and website enquiries in seconds, qualifies budget, area and timeline, then books the viewing directly into your calendar.",
+  },
+  {
+    name: "Restaurants & Hospitality",
+    useCase: "Reservations & menu questions",
+    description:
+      "A chat and WhatsApp agent takes reservations, answers menu and allergen questions, and confirms large-party bookings while your team stays focused on service.",
+  },
+  {
+    name: "E-Commerce",
+    useCase: "Order support & recovery",
+    description:
+      "Order status, returns and sizing questions are resolved instantly from your store data, and abandoned checkouts trigger a personalised WhatsApp or email recovery sequence.",
+  },
+  {
+    name: "Professional Services",
+    useCase: "Consultation scheduling",
+    description:
+      "New enquiries for agencies, consultants and firms are triaged by service type, qualified against your criteria, and scheduled with the right person automatically.",
+  },
+  {
+    name: "Healthcare & Clinics",
+    useCase: "Appointments & reminders",
+    description:
+      "Scheduling, rescheduling and reminder sequences run automatically, reducing no-shows and taking routine questions off your front desk's phone line.",
+  },
+  {
+    name: "Education",
+    useCase: "Admissions & student support",
+    description:
+      "Course, fee and admission questions are answered around the clock, applications are tracked automatically, and follow-up is never missed.",
+  },
+  {
+    name: "Home Services",
+    useCase: "Missed-call recovery & dispatch",
+    description:
+      "Every missed call triggers an instant WhatsApp message that captures the job, quotes a starting range and books the visit — before the customer calls a competitor.",
+  },
+  {
+    name: "Local Businesses",
+    useCase: "Booking & customer support",
+    description:
+      "Salons, gyms, clinics and retail shops get a 24/7 agent that answers common questions, books appointments and captures leads outside business hours.",
+  },
+];
+
+export type CaseStudy = {
+  industry: string;
+  title: string;
+  problem: string;
+  solution: string;
+  outcome: string;
+  before: string[];
+  after: string[];
+};
+
+// Illustrative reference builds — describe representative architectures and
+// the operational change they produce, not results from a named client.
+export const caseStudies: CaseStudy[] = [
+  {
+    industry: "Real Estate",
+    title: "AI Lead Qualification System",
+    problem:
+      "Enquiries arrived from a website form, a property portal and WhatsApp. They were handled manually during office hours, so response times stretched into the next working day.",
+    solution:
+      "A single AI agent now receives every enquiry regardless of channel, asks the qualifying questions a sales team would ask, scores the lead and books qualified prospects straight into a viewing slot.",
+    outcome:
+      "Every enquiry gets an immediate, contextual reply. Qualified leads reach the calendar without a human touch.",
+    before: ["Three unconnected inboxes", "Replies during office hours only", "Manual scoring by memory"],
+    after: ["One agent across every channel", "Immediate first response, 24/7", "Consistent scoring criteria"],
+  },
+  {
+    industry: "E-Commerce",
+    title: "Support Deflection & Order Assistant",
+    problem:
+      "Order status, returns and sizing questions made up most of the support queue, and abandoned checkouts had no recovery flow at all.",
+    solution:
+      "An AI agent trained on store policies and live order data answers routine questions instantly and hands off to a human the moment a conversation needs one, while abandoned carts trigger an automated recovery sequence.",
+    outcome:
+      "Repeat questions are resolved without a ticket, and abandoned checkouts get a real second chance to convert.",
+    before: ["Support queue full of repeat questions", "No cart-recovery flow", "Manual order lookups"],
+    after: ["Routine questions answered instantly", "Automated recovery sequence", "Escalation only when it matters"],
+  },
+  {
+    industry: "Home Services",
+    title: "WhatsApp Reception & Dispatch Flow",
+    problem:
+      "Missed calls during jobs meant missed business, and quoting a job required a callback and a back-and-forth before anything was booked.",
+    solution:
+      "A WhatsApp AI receptionist captures job details on first contact, prices against a rate card and books the visit — with a missed-call trigger that texts the customer automatically.",
+    outcome: "Fewer missed jobs, faster quoting, and a booked visit before the customer looks elsewhere.",
+    before: ["Missed calls, missed jobs", "Manual quoting by phone", "No after-hours coverage"],
+    after: ["Every missed call gets an instant reply", "Instant starting-price quotes", "Booking captured 24/7"],
+  },
+];
+
+export type PricingTier = {
+  name: string;
+  tagline: string;
+  description: string;
+  features: string[];
+  highlighted?: boolean;
+};
+
+export const pricingTiers: PricingTier[] = [
+  {
+    name: "Starter",
+    tagline: "One focused service or agent",
+    description:
+      "A single, well-defined engagement done properly — one marketing service or one AI agent, one channel, one clean integration.",
+    features: [
+      "One service or one AI agent",
+      "One primary channel",
+      "Content or knowledge-base setup",
+      "Up to two integrations",
+      "Launch support",
+    ],
+  },
+  {
+    name: "Growth",
+    tagline: "Multi-channel marketing + AI",
+    description:
+      "Connected marketing and AI systems working together — the right fit once one channel or one bottleneck isn't enough anymore.",
+    features: [
+      "Multiple marketing services",
+      "AI agents across channels",
+      "Lead capture & qualification",
+      "Monthly reporting & optimisation",
+      "Priority support",
+    ],
+    highlighted: true,
+  },
+  {
+    name: "Scale",
+    tagline: "Full growth partnership",
+    description:
+      "An embedded growth team: marketing, web, branding and AI automation running as one connected operating system for your business.",
+    features: [
+      "Full-funnel marketing & content",
+      "Custom multi-agent AI systems",
+      "Business process automation",
+      "Dedicated account strategist",
+      "Continuous optimisation cycle",
+    ],
+  },
+];
+
+export type AutomationStep = {
+  label: string;
+  detail: string;
+};
+
+export const automationSteps: AutomationStep[] = [
+  { label: "Trigger", detail: "A form, message or missed call starts the workflow." },
+  { label: "AI Reasoning", detail: "The agent reads intent and decides the next action." },
+  { label: "System of Record", detail: "Contact, lead and conversation data is written and kept accurate." },
+  { label: "Output Channels", detail: "Email, WhatsApp, calendar and your team are updated automatically." },
+];
+
+export const automationOutcomes = [
+  { value: "< 3s", label: "Trigger to first reply" },
+  { value: "24/7", label: "Coverage, no added headcount" },
+  { value: "0", label: "Forgotten follow-ups" },
+  { value: "Full", label: "Trace on every run" },
 ];

@@ -9,6 +9,7 @@ export default function FinalCTA() {
   return (
     <section className="relative overflow-hidden py-24 sm:py-32">
       <div className="pointer-events-none absolute inset-0 -z-10 bg-base-black" />
+      <div className="pointer-events-none absolute inset-0 -z-10 hud-grid" />
       <motion.div
         animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
         transition={{ duration: 12, repeat: Infinity, ease: "linear" }}

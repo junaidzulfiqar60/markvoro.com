@@ -68,7 +68,7 @@ export default function Footer() {
               {footerServices.map((item) => (
                 <li key={item}>
                   <a
-                    href="#services"
+                    href="/solutions"
                     className="text-sm text-white/50 transition-colors hover:text-white"
                   >
                     {item}
@@ -86,7 +86,7 @@ export default function Footer() {
               {footerAISolutions.map((item) => (
                 <li key={item}>
                   <a
-                    href="#ai-agents"
+                    href="/ai-agents"
                     className="text-sm text-white/50 transition-colors hover:text-white"
                   >
                     {item}
