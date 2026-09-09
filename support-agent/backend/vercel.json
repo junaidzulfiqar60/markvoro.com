@@ -1,0 +1,6 @@
+{
+  "buildCommand": "npm install --prefix ../widget && npm run build --prefix ../widget && mkdir -p public && cp ../widget/dist/widget.js public/widget.js && npx prisma generate && npm run build",
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "/api" }
+  ]
+}
