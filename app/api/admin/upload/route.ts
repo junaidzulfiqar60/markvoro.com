@@ -5,7 +5,7 @@ import { requireAdmin, AuthError } from "@/lib/auth-server";
 import { isCloudinaryConfigured, uploadImage } from "@/lib/cloudinary";
 
 const MAX_BYTES = 4 * 1024 * 1024;
-const ALLOWED_FOLDERS = ["portfolio", "testimonials", "profile"];
+const ALLOWED_FOLDERS = ["portfolio", "testimonials", "profile", "blog"];
 
 export async function POST(request: Request) {
   try {

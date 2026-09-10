@@ -10,7 +10,7 @@ export default function ImageUploader({
 }: {
   value: string;
   onChange: (url: string) => void;
-  folder: "portfolio" | "testimonials" | "profile";
+  folder: "portfolio" | "testimonials" | "profile" | "blog";
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(false);

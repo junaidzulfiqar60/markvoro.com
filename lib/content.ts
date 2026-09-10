@@ -8,6 +8,8 @@ import {
   type WebProject,
   type Testimonial,
 } from "@/lib/data";
+import { blogPosts as staticBlogPosts, type BlogPost } from "@/lib/blogData";
+import type { BlogPost as PrismaBlogPost } from "@prisma/client";
 
 // DB-backed homepage content, each falling back to lib/data.ts's static
 // arrays when its table is empty — shared by the homepage and the dedicated
@@ -86,4 +88,40 @@ export async function getTestimonials(): Promise<{ items: Testimonial[]; isPlace
     console.error("[content] failed to load testimonials from DB, using static fallback", err);
     return { items: staticTestimonials, isPlaceholder: true };
   }
+}
+
+function mapBlogRow(row: PrismaBlogPost): BlogPost {
+  return {
+    slug: row.slug,
+    title: row.title,
+    excerpt: row.excerpt,
+    content: row.content,
+    coverImage: row.coverImage ?? undefined,
+    category: row.category,
+    tags: row.tags,
+    author: row.author,
+    publishedAt: row.publishedAt.toISOString(),
+    metaTitle: row.metaTitle ?? undefined,
+    metaDescription: row.metaDescription ?? undefined,
+    featured: row.featured,
+  };
+}
+
+export async function getBlogPosts(): Promise<BlogPost[]> {
+  try {
+    const rows = await prisma.blogPost.findMany({ where: { published: true }, orderBy: { publishedAt: "desc" } });
+    if (rows.length === 0) return staticBlogPosts;
+    return rows.map(mapBlogRow);
+  } catch (err) {
+    console.error("[content] failed to load blog posts from DB, using static fallback", err);
+    return staticBlogPosts;
+  }
+}
+
+// Reuses getBlogPosts() so the fallback rule stays identical between the
+// listing and detail pages: fall back to static posts only when the whole
+// table is empty (or unreachable), not per-slug.
+export async function getBlogPost(slug: string): Promise<BlogPost | undefined> {
+  const posts = await getBlogPosts();
+  return posts.find((p) => p.slug === slug);
 }

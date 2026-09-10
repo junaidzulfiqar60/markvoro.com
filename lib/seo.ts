@@ -76,6 +76,39 @@ export function faqJsonLd(items: FaqItem[]) {
   };
 }
 
+export function blogPostingJsonLd(options: {
+  title: string;
+  description: string;
+  slug: string;
+  author: string;
+  publishedAt: string;
+  coverImage?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: options.title,
+    description: options.description,
+    url: absoluteUrl(`/blog/${options.slug}`),
+    image: options.coverImage ? absoluteUrl(options.coverImage) : absoluteUrl("/logo.jpeg"),
+    datePublished: options.publishedAt,
+    author: { "@type": "Organization", name: SITE_NAME },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    mainEntityOfPage: absoluteUrl(`/blog/${options.slug}`),
+  };
+}
+
+export function blogJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": `${SITE_URL}/#blog`,
+    url: absoluteUrl("/blog"),
+    name: `${SITE_NAME} Blog`,
+    publisher: { "@id": `${SITE_URL}/#organization` },
+  };
+}
+
 export function serviceJsonLd(options: {
   name: string;
   description: string;

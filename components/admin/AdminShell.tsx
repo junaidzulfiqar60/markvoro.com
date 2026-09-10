@@ -13,6 +13,7 @@ import {
   Star,
   Package,
   Mail,
+  Newspaper,
   Settings,
   LogOut,
   Menu,
@@ -28,6 +29,7 @@ const NAV_ITEMS = [
   { href: "/admin/portfolio", label: "Portfolio", icon: FolderKanban },
   { href: "/admin/testimonials", label: "Testimonials", icon: Star },
   { href: "/admin/services", label: "Services", icon: Package },
+  { href: "/admin/blog", label: "Blog", icon: Newspaper },
   { href: "/admin/newsletter", label: "Newsletter", icon: Mail },
 ];
 

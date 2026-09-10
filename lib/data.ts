@@ -15,6 +15,7 @@ export const navLinks = [
   { label: "Automations", href: "/automations" },
   { label: "Industries", href: "/industries" },
   { label: "Case Studies", href: "/case-studies" },
+  { label: "Blog", href: "/blog" },
   { label: "Pricing", href: "/pricing" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },

@@ -1,5 +1,6 @@
 import { PrismaClient, type ServiceCategory } from "@prisma/client";
 import bcrypt from "bcryptjs";
+import { blogPosts } from "../lib/blogData";
 
 const prisma = new PrismaClient();
 
@@ -139,6 +140,26 @@ async function main() {
     });
   }
   console.log(`Seeded ${SAMPLE_SERVICES.length} sample services.`);
+
+  for (const post of blogPosts) {
+    await prisma.blogPost.upsert({
+      where: { slug: post.slug },
+      update: {},
+      create: {
+        title: post.title,
+        slug: post.slug,
+        excerpt: post.excerpt,
+        content: post.content,
+        coverImage: post.coverImage,
+        category: post.category,
+        tags: post.tags,
+        author: post.author,
+        featured: post.featured ?? false,
+        publishedAt: new Date(post.publishedAt),
+      },
+    });
+  }
+  console.log(`Seeded ${blogPosts.length} blog posts.`);
 }
 
 main()

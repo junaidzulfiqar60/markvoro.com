@@ -10,10 +10,11 @@ import Process from "@/components/sections/Process";
 import WebShowcase from "@/components/sections/WebShowcase";
 import Stats from "@/components/sections/Stats";
 import Testimonials from "@/components/sections/Testimonials";
+import BlogPreview from "@/components/sections/BlogPreview";
 import FAQ from "@/components/sections/FAQ";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Contact from "@/components/sections/Contact";
-import { getServices, getPortfolioProjects, getTestimonials } from "@/lib/content";
+import { getServices, getPortfolioProjects, getTestimonials, getBlogPosts } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Digital Marketing Agency in Pakistan",
@@ -27,10 +28,11 @@ export const metadata: Metadata = {
 export const revalidate = 60;
 
 export default async function Home() {
-  const [services, projects, testimonials] = await Promise.all([
+  const [services, projects, testimonials, blogPosts] = await Promise.all([
     getServices(),
     getPortfolioProjects(),
     getTestimonials(),
+    getBlogPosts(),
   ]);
 
   return (
@@ -46,6 +48,7 @@ export default async function Home() {
         <WebShowcase projects={projects} />
         <Stats />
         <Testimonials testimonials={testimonials.items} isPlaceholder={testimonials.isPlaceholder} />
+        <BlogPreview posts={blogPosts} />
         <FAQ />
         <FinalCTA />
         <Contact />

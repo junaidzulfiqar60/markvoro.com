@@ -169,3 +169,33 @@ export const testimonialCreateSchema = z.object({
   published: z.boolean().default(true),
 });
 export const testimonialUpdateSchema = testimonialCreateSchema.partial();
+
+export const BLOG_CATEGORY_OPTIONS = [
+  "SEO",
+  "Web Development",
+  "Digital Marketing",
+  "Paid Advertising",
+  "AI & Automation",
+  "Business Growth",
+] as const;
+
+export const blogPostCreateSchema = z.object({
+  title: nonEmpty("Title"),
+  slug: z
+    .string()
+    .trim()
+    .min(1, "Slug is required.")
+    .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Slug must be lowercase letters, numbers and hyphens only."),
+  excerpt: nonEmpty("Excerpt"),
+  content: nonEmpty("Content"),
+  coverImage: z.string().trim().optional(),
+  category: z.enum(BLOG_CATEGORY_OPTIONS, { errorMap: () => ({ message: "Please select a category." }) }),
+  tags: z.array(z.string().trim().min(1)).default([]),
+  author: z.string().trim().min(1).default("MARKVORO Team"),
+  metaTitle: z.string().trim().optional(),
+  metaDescription: z.string().trim().optional(),
+  featured: z.boolean().default(false),
+  published: z.boolean().default(true),
+  publishedAt: z.coerce.date().optional(),
+});
+export const blogPostUpdateSchema = blogPostCreateSchema.partial();
