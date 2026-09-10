@@ -13,6 +13,18 @@ import {
 // arrays when its table is empty — shared by the homepage and the dedicated
 // /solutions page so both stay in sync with admin-managed content.
 
+// Slugs that actually resolve to a /services/<slug> page — guards against an
+// admin-entered DB Service.slug that doesn't match any real route, which
+// would otherwise render a broken "Learn more" link.
+const DEDICATED_SERVICE_SLUGS = new Set([
+  "seo",
+  "social-media-marketing",
+  "web-development",
+  "email-marketing",
+  "paid-advertising",
+  "ai-agents",
+]);
+
 const PROJECT_GRADIENTS = [
   "from-brand-orange via-brand-pink to-brand-purple",
   "from-brand-pink via-brand-purple to-brand-blue",
@@ -30,6 +42,7 @@ export async function getServices(): Promise<Service[]> {
       name: row.title,
       description: row.shortDescription,
       features: row.features,
+      slug: DEDICATED_SERVICE_SLUGS.has(row.slug) ? row.slug : undefined,
     }));
   } catch (err) {
     console.error("[content] failed to load services from DB, using static fallback", err);

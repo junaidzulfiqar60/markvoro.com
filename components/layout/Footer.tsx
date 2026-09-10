@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Instagram, Facebook, Linkedin, Youtube, Mail, Phone } from "lucide-react";
 import { navLinks, footerServices, footerAISolutions, contactInfo } from "@/lib/data";
 
@@ -66,13 +67,13 @@ export default function Footer() {
             </h4>
             <ul className="mt-5 space-y-3">
               {footerServices.map((item) => (
-                <li key={item}>
-                  <a
-                    href="/solutions"
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
                     className="text-sm text-white/50 transition-colors hover:text-white"
                   >
-                    {item}
-                  </a>
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -84,13 +85,13 @@ export default function Footer() {
             </h4>
             <ul className="mt-5 space-y-3">
               {footerAISolutions.map((item) => (
-                <li key={item}>
-                  <a
-                    href="/ai-agents"
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
                     className="text-sm text-white/50 transition-colors hover:text-white"
                   >
-                    {item}
-                  </a>
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -103,12 +104,12 @@ export default function Footer() {
             <ul className="mt-5 space-y-3">
               {navLinks.map((item) => (
                 <li key={item.href}>
-                  <a
+                  <Link
                     href={item.href}
                     className="text-sm text-white/50 transition-colors hover:text-white"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

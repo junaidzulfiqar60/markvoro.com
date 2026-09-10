@@ -4,12 +4,14 @@ import Footer from "@/components/layout/Footer";
 import PageHero from "@/components/ui/PageHero";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Reveal from "@/components/ui/Reveal";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import { industries } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Industries — MARKVORO",
+  title: "Industries We Serve",
   description:
-    "MARKVORO builds marketing and AI automation systems for real estate, e-commerce, restaurants, home services, healthcare, education and more.",
+    "MARKVORO builds marketing and AI automation systems for real estate, e-commerce, restaurants, home services, healthcare, education and more businesses across Pakistan.",
+  alternates: { canonical: "/industries" },
 };
 
 export default function IndustriesPage() {
@@ -28,6 +30,8 @@ export default function IndustriesPage() {
           }
           description="The architecture stays the same. The conversation, the qualifying criteria and the integrations are built around your sector."
         />
+
+        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Industries", href: "/industries" }]} />
 
         <section className="relative py-10 sm:py-16">
           <div className="section-padding container-max">

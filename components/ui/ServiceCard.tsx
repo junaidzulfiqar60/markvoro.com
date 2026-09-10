@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import type { Service } from "@/lib/data";
 import { resolveIcon } from "@/lib/iconMap";
 
@@ -50,6 +52,16 @@ export default function ServiceCard({ service, index }: { service: Service; inde
             </span>
           )}
         </div>
+
+        {service.slug && (
+          <Link
+            href={`/services/${service.slug}`}
+            className="relative mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-cyan transition-colors hover:text-white"
+          >
+            Learn more
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        )}
       </div>
     </motion.div>
   );

@@ -6,12 +6,14 @@ import PageHero from "@/components/ui/PageHero";
 import Reveal from "@/components/ui/Reveal";
 import Counter from "@/components/ui/Counter";
 import FinalCTA from "@/components/sections/FinalCTA";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import { automationSteps, automationOutcomes } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Automations — MARKVORO",
+  title: "Business Automation & Workflow Systems",
   description:
-    "How MARKVORO builds automated workflows — one trigger fans out across your CRM, inbox, WhatsApp and calendar, with an AI agent making the routing decisions.",
+    "How MARKVORO builds AI automation workflows in Pakistan — one trigger fans out across your CRM, inbox, WhatsApp and calendar, with an AI agent making the routing decisions.",
+  alternates: { canonical: "/automations" },
 };
 
 const stepIcons = [Zap, Brain, Database, Radio];
@@ -32,6 +34,8 @@ export default function AutomationsPage() {
           }
           description="This is what an end-to-end workflow looks like once it's built properly — a single trigger fans out across your CRM, inbox, WhatsApp and calendar, with an AI agent making the routing decisions in between."
         />
+
+        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Automations", href: "/automations" }]} />
 
         {/* Pipeline */}
         <section className="relative py-10 sm:py-16">

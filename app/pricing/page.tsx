@@ -5,12 +5,14 @@ import Footer from "@/components/layout/Footer";
 import PageHero from "@/components/ui/PageHero";
 import Reveal from "@/components/ui/Reveal";
 import FAQ from "@/components/sections/FAQ";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import { pricingTiers } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Pricing — MARKVORO",
+  title: "Pricing",
   description:
-    "MARKVORO pricing tiers — scoped after a discovery call, because the right number depends on your services and integrations, not a fixed price list.",
+    "MARKVORO pricing tiers for digital marketing, web development and AI automation — scoped after a discovery call, because the right number depends on your services and integrations.",
+  alternates: { canonical: "/pricing" },
 };
 
 export default function PricingPage() {
@@ -29,6 +31,8 @@ export default function PricingPage() {
           }
           description="Every engagement is quoted after a short discovery call, because the right number depends on your services, channels and integrations — not a fixed price list."
         />
+
+        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Pricing", href: "/pricing" }]} />
 
         <section className="relative py-10 sm:py-16">
           <div className="section-padding container-max">

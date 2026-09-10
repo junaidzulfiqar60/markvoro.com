@@ -6,11 +6,13 @@ import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import Process from "@/components/sections/Process";
 import Stats from "@/components/sections/Stats";
 import FinalCTA from "@/components/sections/FinalCTA";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 
 export const metadata: Metadata = {
-  title: "About — MARKVORO",
+  title: "About Us",
   description:
-    "MARKVORO is a digital marketing, web development and AI automation agency built around strategy, creativity and intelligent technology.",
+    "MARKVORO is a digital marketing, web development and AI automation agency in Pakistan built around strategy, creativity and intelligent technology.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
@@ -29,6 +31,7 @@ export default function AboutPage() {
           }
           description="MARKVORO combines digital marketing, high-performance websites and custom AI agents into one connected growth system — not three separate vendors."
         />
+        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About", href: "/about" }]} />
         <WhyChooseUs />
         <Process />
         <Stats />

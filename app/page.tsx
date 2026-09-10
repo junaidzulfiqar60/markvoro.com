@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
@@ -13,6 +14,13 @@ import FAQ from "@/components/sections/FAQ";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Contact from "@/components/sections/Contact";
 import { getServices, getPortfolioProjects, getTestimonials } from "@/lib/content";
+
+export const metadata: Metadata = {
+  title: "Digital Marketing Agency in Pakistan",
+  description:
+    "MARKVORO is a digital marketing agency in Pakistan offering SEO, social media marketing, Google & Facebook ads, web development and custom AI agent development for ambitious businesses.",
+  alternates: { canonical: "/" },
+};
 
 // Revalidate every 60s so admin-managed content shows up without a full
 // rebuild, without hitting the DB on every single request.

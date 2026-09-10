@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { contactInfo } from "@/lib/data";
 import { buildWhatsAppUrl } from "@/lib/utils";
@@ -47,10 +48,10 @@ export default function FinalCTA() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          <a href="#contact" className="btn-primary">
+          <Link href="/contact" className="btn-primary">
             Start Your Growth Journey
             <ArrowRight className="h-4 w-4" />
-          </a>
+          </Link>
           <a
             href={buildWhatsAppUrl(contactInfo.whatsapp, "Hello MARKVORO, I am interested in your digital services.")}
             target="_blank"

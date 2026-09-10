@@ -4,6 +4,8 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Plus } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
+import JsonLd from "@/components/seo/JsonLd";
+import { faqJsonLd } from "@/lib/seo";
 import { faqs } from "@/lib/data";
 
 export default function FAQ() {
@@ -11,6 +13,7 @@ export default function FAQ() {
 
   return (
     <section id="faq" className="relative py-24 sm:py-32">
+      <JsonLd data={faqJsonLd(faqs)} />
       <div className="section-padding container-max">
         <SectionHeading
           eyebrow="FAQ"

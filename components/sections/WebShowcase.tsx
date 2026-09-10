@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   ArrowRight,
   ShoppingCart,
@@ -93,10 +94,10 @@ export default function WebShowcase({ projects }: { projects: WebProject[] }) {
         </div>
 
         <div className="mt-14 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a href="#contact" className="btn-green">
+          <Link href="/contact" className="btn-green">
             Start Your Website Project
             <ArrowRight className="h-4 w-4" />
-          </a>
+          </Link>
           <a
             href={buildWhatsAppUrl(contactInfo.whatsapp, "Hi MARKVORO! I'd like to discuss a new website project.")}
             target="_blank"

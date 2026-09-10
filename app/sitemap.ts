@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
-
-const BASE_URL = "https://www.markvoro.com";
+import { SITE_URL } from "@/lib/seo";
+import { servicePages } from "@/lib/servicePages";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
@@ -8,6 +8,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/solutions", priority: 0.8, changeFrequency: "weekly" as const },
     { path: "/ai-agents", priority: 0.8, changeFrequency: "weekly" as const },
     { path: "/automations", priority: 0.8, changeFrequency: "weekly" as const },
+    ...servicePages.map((s) => ({
+      path: `/services/${s.slug}`,
+      priority: 0.8,
+      changeFrequency: "weekly" as const,
+    })),
     { path: "/industries", priority: 0.7, changeFrequency: "monthly" as const },
     { path: "/case-studies", priority: 0.7, changeFrequency: "monthly" as const },
     { path: "/pricing", priority: 0.7, changeFrequency: "monthly" as const },
@@ -18,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
   return routes.map(({ path, priority, changeFrequency }) => ({
-    url: `${BASE_URL}${path}`,
+    url: `${SITE_URL}${path}`,
     lastModified,
     changeFrequency,
     priority,

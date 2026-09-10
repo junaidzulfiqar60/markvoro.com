@@ -5,12 +5,14 @@ import Footer from "@/components/layout/Footer";
 import PageHero from "@/components/ui/PageHero";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Reveal from "@/components/ui/Reveal";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import { caseStudies } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Case Studies — MARKVORO",
+  title: "Case Studies",
   description:
-    "Reference builds showing how MARKVORO's AI agents and automation systems change day-to-day operations.",
+    "Reference builds showing how MARKVORO's AI agents and automation systems change day-to-day operations for real estate, e-commerce and home services businesses.",
+  alternates: { canonical: "/case-studies" },
 };
 
 export default function CaseStudiesPage() {
@@ -29,6 +31,8 @@ export default function CaseStudiesPage() {
           }
           description="Each example below shows the problem, the system we'd build and the operational change it produces — illustrative reference architectures, not reports of a specific named client."
         />
+
+        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Case Studies", href: "/case-studies" }]} />
 
         <section className="relative py-10 sm:py-16">
           <div className="section-padding container-max space-y-8">

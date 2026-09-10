@@ -30,6 +30,10 @@ export type Service = {
   name: string;
   description: string;
   features: string[];
+  // Slug of a matching /services/<slug> deep-dive page, when one exists —
+  // renders a "Learn more" link on the card. Undefined for services without
+  // a dedicated page yet.
+  slug?: string;
 };
 
 export const services: Service[] = [
@@ -47,6 +51,7 @@ export const services: Service[] = [
       "Community Management",
       "Reels & Short-Form Content",
     ],
+    slug: "social-media-marketing",
   },
   {
     number: "02",
@@ -63,6 +68,7 @@ export const services: Service[] = [
       "Conversion Tracking",
       "Campaign Optimization",
     ],
+    slug: "paid-advertising",
   },
   {
     number: "03",
@@ -78,6 +84,7 @@ export const services: Service[] = [
       "Google Business Optimization",
       "Link Building",
     ],
+    slug: "seo",
   },
   {
     number: "04",
@@ -123,6 +130,7 @@ export const services: Service[] = [
       "Responsive Design",
       "Speed Optimization",
     ],
+    slug: "web-development",
   },
   {
     number: "07",
@@ -138,6 +146,7 @@ export const services: Service[] = [
       "Customer Retention",
       "Audience Segmentation",
     ],
+    slug: "email-marketing",
   },
   {
     number: "08",
@@ -466,20 +475,20 @@ export const serviceOptions = [
 ];
 
 export const footerServices = [
-  "Social Media Marketing",
-  "Paid Advertising",
-  "SEO",
-  "Web Development",
-  "Branding",
-  "Email Marketing",
+  { label: "Social Media Marketing", href: "/services/social-media-marketing" },
+  { label: "Paid Advertising", href: "/services/paid-advertising" },
+  { label: "SEO", href: "/services/seo" },
+  { label: "Web Development", href: "/services/web-development" },
+  { label: "Branding", href: "/solutions" },
+  { label: "Email Marketing", href: "/services/email-marketing" },
 ];
 
 export const footerAISolutions = [
-  "AI Sales Agents",
-  "AI Support Agents",
-  "AI WhatsApp Agents",
-  "AI Booking Agents",
-  "Business Automation",
+  { label: "AI Sales Agents", href: "/services/ai-agents" },
+  { label: "AI Support Agents", href: "/services/ai-agents" },
+  { label: "AI WhatsApp Agents", href: "/services/ai-agents" },
+  { label: "AI Booking Agents", href: "/services/ai-agents" },
+  { label: "Business Automation", href: "/automations" },
 ];
 
 export type Industry = {
