@@ -69,6 +69,10 @@ explicit user approval, and the rule against fabricating metrics.
   They need credentials in `.env` (see `.env.example`) that only the user
   can provide; do not assume they work until the user confirms credentials
   are in place.
+- `db/schema.sql`, `config/database.md` — the intended Supabase/Postgres
+  schema for persisting what's currently in `data/`. **Design only — no
+  Supabase project is provisioned or connected**; scripts still write to
+  `data/`. See `config/database.md` before assuming any table is live.
 
 ## Relationship to the main site repo
 

@@ -35,7 +35,11 @@ Every report must contain, in this order:
 
 1. Pull every relevant file from `../../data/audits/`, `../../data/keywords/`,
    `../../data/competitors/`, and prior reports in `../../data/reports/`
-   for the period being reported on.
+   for the period being reported on. `../../scripts/gsc/` output gives
+   queries, clicks, impressions, CTR, and average position per page,
+   country, and device, plus a separate search-appearance breakdown —
+   use these for the Keywords, Organic Traffic, and Top Pages sections
+   instead of estimating.
 2. For each section, report only what the underlying data actually
    supports. If a section has no data for this period (e.g. no competitor
    run happened), say "No data collected this period" — don't pad it.

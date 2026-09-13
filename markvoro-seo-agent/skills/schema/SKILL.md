@@ -26,6 +26,21 @@ A new schema need should extend this file with a new function following
 the same pattern (real data in, `@id` references to `organizationJsonLd()`
 where applicable), not a one-off JSON-LD block inlined in a page component.
 
+## Required schema types — current coverage
+
+Check every page against this list. Status reflects what's actually in
+`lib/seo.ts` today — verify against the file, don't assume it's stale:
+
+| Type | Status | Helper | Notes |
+| --- | --- | --- | --- |
+| Organization | Implemented | `organizationJsonLd()` | Sitewide, referenced by `@id` from everything else. |
+| WebSite | Implemented | `websiteJsonLd()` | |
+| Service | Implemented | `serviceJsonLd(options)` | One per service page. |
+| BreadcrumbList | Implemented | `breadcrumbJsonLd(items)` | Should appear on every non-homepage page. |
+| FAQPage | Implemented | `faqJsonLd(items)` | Only for pages with real Q&A content already on the page — never invent questions to attach schema. |
+| Article | Covered via `BlogPosting` | `blogPostingJsonLd(options)` | `BlogPosting` is a valid `Article` subtype; don't add a separate bare `Article` block on the same content. |
+| LocalBusiness | **Not implemented** | none | Requires a verified street address. `config/brand.md` and [local-seo](../local-seo/SKILL.md) confirm none exists in the codebase — do not add this schema or invent an address to enable it. Revisit only once the user supplies a real address. |
+
 ## Checklist
 
 - Every page that should emit schema does (services → `Service`, blog

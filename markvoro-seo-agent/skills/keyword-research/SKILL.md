@@ -18,6 +18,11 @@ page's on-page SEO (feeds `optimize-page`), or on its own via the
 - Existing blog topics in `../../lib/blogData.ts` / DB-backed posts.
 - Actual queries MARKVORO already ranks for or gets impressions on, from
   `npm run gsc` (`../../scripts/gsc/`) — this is real data, not a guess.
+  Each row carries query, page, country, device, clicks, impressions,
+  CTR, and average position; a separate `searchAppearance` array (rich
+  results, AMP, etc.) is included too — use country/device splits to spot
+  a keyword that performs differently on mobile vs. desktop, or in
+  Pakistan vs. international traffic, before recommending a fix.
 - Gaps surfaced by the [competitor-analysis](../competitor-analysis/SKILL.md)
   skill.
 

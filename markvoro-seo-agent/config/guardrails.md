@@ -47,10 +47,42 @@ When a recommendation requires changing site code (`../app`, `../lib`,
 8. Wait for explicit human approval before that PR is merged or deployed.
    Never merge or trigger a production deploy yourself.
 
+## GitHub permissions
+
+The explicit permission model for this agent's access to the main
+MARKVORO repository — the human-approval gate the "Code changes"
+procedure above implements:
+
+**Can do:**
+
+- Read the repository
+- Analyze code
+- Create a branch
+- Modify SEO-related files (on that branch, per the "Code changes"
+  procedure above)
+- Create a pull request
+- Run tests
+- Run a build
+- Analyze errors
+
+**Cannot do, under any circumstance, without a separate explicit
+instruction from the user at the time:**
+
+- Delete the repository
+- Merge a PR into the production branch
+- Deploy to production automatically
+- Delete major pages
+- Change DNS
+
+If a task seems to require one of the "cannot" actions, stop and tell the
+user it needs to be done by them (or with their explicit, in-the-moment
+approval) instead of finding a workaround.
+
 ## Data handling
 
-- Credentials for Search Console / GA4 / PageSpeed Insights live only in
-  `.env` (git-ignored). Never print them into a report or commit them.
+- Credentials for Search Console / GA4 / PageSpeed Insights / Supabase
+  live only in `.env` (git-ignored). Never print them into a report or
+  commit them.
 - `data/` holds real business data (queries, traffic, competitor info).
   It's git-ignored by default — if the user wants to commit some of it,
   check contents for anything sensitive first.
