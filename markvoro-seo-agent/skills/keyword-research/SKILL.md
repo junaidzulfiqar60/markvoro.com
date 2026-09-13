@@ -61,6 +61,30 @@ content), write `unavailable` — never estimate or invent it:
 | Target page | existing URL, or "candidate: new page/post" |
 | Content type | e.g. service page, blog post, landing page, FAQ entry |
 
+## Quick-win keywords
+
+A standing filter over real `npm run gsc` output, run any time this skill
+runs against fresh data — the highest-leverage view of Search Console data
+because a query already near page 1 needs far less work to move than one
+starting from zero:
+
+Rows where `position` is between 8 and 20 (page-1-adjacent, not yet
+there) **and** `impressions > 0`, sorted by `impressions` descending —
+real Search visibility already exists, ranking is the only gap. Record as:
+
+| Keyword | Current position | Impressions | CTR | Target page | Recommended action |
+| --- | --- | --- | --- | --- | --- |
+
+`Keyword`/`Current position`/`Impressions`/`CTR`/`Target page` come
+straight from the matching GSC row's `query`/`position`/`impressions`/
+`ctr`/`page`. `Recommended action` is this skill's own judgment (e.g.
+"strengthen title/H1 for this term" — [on-page-seo](../on-page-seo/SKILL.md);
+"add supporting internal links" —
+[internal-linking](../internal-linking/SKILL.md); "expand thin content" —
+[content-seo](../content-seo/SKILL.md)), not a numeric estimate. If no row
+in the current GSC pull falls in the 8–20 range, say so — an empty table,
+not a fabricated entry.
+
 ## Method
 
 1. Pull the latest Search Console query/page report via `npm run gsc`.

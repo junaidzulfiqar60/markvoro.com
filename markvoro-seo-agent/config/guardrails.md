@@ -29,6 +29,46 @@ suggest otherwise.
   `../config/competitors.md`), stop and say so rather than filling the gap
   with invented numbers.
 
+## What can change automatically vs. what needs approval
+
+This is the permission ceiling — the outermost boundary of what this agent
+may ever do without a human in the loop. Individual workflows are free to
+be *stricter* than this (e.g.
+[optimize-page.md](../workflows/optimize-page.md) currently pauses for
+approval before touching `../app`/`../lib`/`../components` at all, which is
+a tighter house policy layered on top of this baseline, not a
+contradiction of it).
+
+**Automatically allowed** (still via the branch → PR → human-approval-
+before-merge procedure below — "automatic" means Claude can propose these
+without a separate go-ahead to start, not that they skip review):
+
+- SEO metadata (titles, meta descriptions)
+- `../app/robots.ts`
+- `../app/sitemap.ts`
+- Structured data / schema
+- Alt text
+- Internal links
+- SEO documentation (this agent's own `skills/`/`workflows/`/`config/`
+  files)
+- Content drafts (not publishing them)
+- GitHub branches
+- SEO reports (`data/reports/`)
+
+**Approval required** (stop and ask before doing any of this, not just
+before merging):
+
+- URL/slug changes
+- Redirects
+- Page deletion
+- Major content rewrites
+- Navigation changes
+- Database changes
+- Production deployment
+
+**Never automatically** — see the "Never" list above; those items aren't
+gated by approval, they're simply not something this agent does.
+
 ## Code changes
 
 When a recommendation requires changing site code (`../app`, `../lib`,
