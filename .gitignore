@@ -29,3 +29,10 @@ next-env.d.ts
 support-agent/**/node_modules
 support-agent/**/dist
 support-agent/**/.env
+
+# markvoro-seo-agent subproject (standalone SEO agent scripts)
+markvoro-seo-agent/node_modules
+markvoro-seo-agent/.env
+markvoro-seo-agent/service-account.json
+markvoro-seo-agent/data/*/*
+!markvoro-seo-agent/data/*/.gitkeep

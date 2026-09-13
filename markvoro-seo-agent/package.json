@@ -1,0 +1,19 @@
+{
+  "name": "markvoro-seo-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "SEO skills, workflows, and data-collection scripts for markvoro.com. See CLAUDE.md.",
+  "scripts": {
+    "crawl": "node scripts/crawl/crawl.mjs",
+    "gsc": "node scripts/gsc/fetch-search-console.mjs",
+    "ga4": "node scripts/ga4/fetch-ga4.mjs",
+    "pagespeed": "node scripts/pagespeed/fetch-pagespeed.mjs"
+  },
+  "dependencies": {
+    "@google-analytics/data": "^4.9.0",
+    "cheerio": "^1.0.0",
+    "dotenv": "^16.4.5",
+    "googleapis": "^140.0.1"
+  }
+}

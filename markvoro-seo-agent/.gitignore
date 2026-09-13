@@ -1,0 +1,7 @@
+node_modules/
+.env
+service-account.json
+
+# real business data — see ../CLAUDE.md; keep the folders, not their output
+data/*/*
+!data/*/.gitkeep
