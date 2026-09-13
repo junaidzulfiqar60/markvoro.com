@@ -9,6 +9,9 @@ description: Compile audit, keyword, competitor, and performance data into stake
 
 `weekly-monitor` (lightweight) and `monthly-report` (full) both end here.
 Also usable standalone once enough `data/` output exists to report on.
+`monthly-report` prepends a compact scorecard before these sections — see
+its own [Scorecard](../../workflows/monthly-report.md#scorecard)
+definition for that format and field sources.
 
 ## Required sections
 

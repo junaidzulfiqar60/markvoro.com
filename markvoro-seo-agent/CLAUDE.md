@@ -74,6 +74,11 @@ explicit user approval, and the rule against fabricating metrics.
   schema for persisting what's currently in `data/`. **Design only — no
   Supabase project is provisioned or connected**; scripts still write to
   `data/`. See `config/database.md` before assuming any table is live.
+- `config/integrations.md` — the phased order the user intends to connect
+  real tools in (Claude Code/GitHub/GSC/GA4/PageSpeed/crawling now;
+  Ahrefs-or-Semrush/Screaming Frog/Supabase next; scheduling/dashboard/
+  Slack-WhatsApp-email reporting after that). Status only — implement a
+  specific item when asked, not because it's next on the list.
 
 ## Relationship to the main site repo
 
