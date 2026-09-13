@@ -37,8 +37,9 @@ results, Search Console, GA4, PageSpeed Insights) and a `data/` directory
 where findings are recorded.
 
 The canonical end-to-end workflow is
-[workflows/full-audit.md](workflows/full-audit.md) — crawl through report,
-16 steps. Every issue any skill surfaces uses the Issue Format defined in
+[workflows/full-audit.md](workflows/full-audit.md) — crawl through
+roadmap, 20 steps. Every issue any skill surfaces uses the Issue Format
+defined in
 [config/seo-rules.md](config/seo-rules.md) (Issue / Evidence / Impact /
 Priority / Recommended fix / Implementation instructions / Validation
 method).

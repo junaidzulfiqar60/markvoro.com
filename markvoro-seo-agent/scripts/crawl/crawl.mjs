@@ -1,6 +1,8 @@
-// Crawls a site's sitemap and reports per-page technical/on-page facts.
-// Used by the technical-seo, on-page-seo, internal-linking, and
-// competitor-analysis skills. See ../../CLAUDE.md.
+// Crawls a site's sitemap and reports per-page technical/on-page facts,
+// plus a site-level robots.txt check. Used by the technical-seo,
+// on-page-seo, internal-linking, schema, content-seo, and
+// competitor-analysis skills, and by workflows/full-audit.md steps 2-7 and
+// 11-13, 15. See ../../CLAUDE.md.
 //
 // Usage:
 //   npm run crawl                       # crawls CRAWL_BASE_URL from .env
@@ -25,6 +27,37 @@ async function fetchText(url) {
   return { status: res.status, ok: res.ok, text: res.ok ? await res.text() : "" };
 }
 
+async function getRobotsTxt() {
+  const robotsUrl = new URL("/robots.txt", origin).toString();
+  const { status, ok, text } = await fetchText(robotsUrl);
+  if (!ok) return { url: robotsUrl, status, found: false, disallowedPaths: [] };
+
+  // Simplified parse: collects Disallow paths under any "User-agent: *"
+  // group. Doesn't handle Allow overrides, wildcards, or agent-specific
+  // groups — good enough to flag an obviously-blocked path, not a
+  // replacement for a real robots.txt validator.
+  const disallowedPaths = [];
+  let inWildcardGroup = false;
+  for (const rawLine of text.split("\n")) {
+    const line = rawLine.split("#")[0].trim();
+    if (!line) continue;
+    const [rawField, ...rest] = line.split(":");
+    const field = rawField.trim().toLowerCase();
+    const value = rest.join(":").trim();
+    if (field === "user-agent") {
+      inWildcardGroup = value === "*";
+    } else if (field === "disallow" && inWildcardGroup && value) {
+      disallowedPaths.push(value);
+    }
+  }
+  return { url: robotsUrl, status, found: true, disallowedPaths };
+}
+
+function isDisallowedByRobots(url, disallowedPaths) {
+  const pathname = new URL(url).pathname;
+  return disallowedPaths.some((rule) => pathname.startsWith(rule));
+}
+
 async function getSitemapUrls() {
   const candidates = [new URL("/sitemap.xml", origin).toString()];
   for (const sitemapUrl of candidates) {
@@ -46,11 +79,13 @@ async function crawlPage(url) {
   const title = $("title").first().text().trim();
   const metaDescription = $('meta[name="description"]').attr("content")?.trim() ?? null;
   const canonical = $('link[rel="canonical"]').attr("href") ?? null;
+  const metaRobots = $('meta[name="robots"]').attr("content")?.trim().toLowerCase() ?? null;
   const h1s = $("h1").map((_, el) => $(el).text().trim()).get();
   const imagesMissingAlt = $("img")
     .filter((_, el) => !$(el).attr("alt")?.trim())
     .map((_, el) => $(el).attr("src") ?? "(no src)")
     .get();
+  const imageCount = $("img").length;
   const internalLinks = $("a[href]")
     .map((_, el) => $(el).attr("href"))
     .get()
@@ -64,6 +99,29 @@ async function crawlPage(url) {
     })
     .filter((abs) => abs && new URL(abs).origin === origin);
 
+  // JSON-LD types present, for the schema skill — collects "@type" from
+  // every ld+json block, including nested @graph arrays. Malformed JSON is
+  // skipped rather than failing the whole page crawl.
+  const schemaTypes = new Set();
+  $('script[type="application/ld+json"]').each((_, el) => {
+    try {
+      const parsed = JSON.parse($(el).contents().text());
+      const nodes = Array.isArray(parsed) ? parsed : parsed["@graph"] ? parsed["@graph"] : [parsed];
+      for (const node of nodes) {
+        const type = node?.["@type"];
+        if (Array.isArray(type)) type.forEach((t) => schemaTypes.add(t));
+        else if (type) schemaTypes.add(type);
+      }
+    } catch {
+      // malformed JSON-LD is itself a finding for the schema skill to raise
+    }
+  });
+
+  // Rough word count from visible body text — a structural proxy for
+  // content-seo's depth-vs-intent check, not a quality judgment on its own.
+  const bodyText = $("body").clone().find("script, style, noscript").remove().end().text();
+  const wordCount = bodyText.split(/\s+/).filter(Boolean).length;
+
   return {
     url,
     status,
@@ -72,16 +130,21 @@ async function crawlPage(url) {
     metaDescription,
     metaDescriptionLength: metaDescription?.length ?? 0,
     canonical,
+    metaRobots,
     h1Count: h1s.length,
     h1s,
+    imageCount,
     imagesMissingAltCount: imagesMissingAlt.length,
     imagesMissingAlt,
     internalLinkCount: internalLinks.length,
     internalLinks,
+    schemaTypes: [...schemaTypes],
+    wordCount,
   };
 }
 
 async function main() {
+  const robotsTxt = await getRobotsTxt();
   const urls = await getSitemapUrls();
   console.log(`Crawling ${urls.length} URL(s) from ${origin} ...`);
 
@@ -103,13 +166,23 @@ async function main() {
   const homepage = normalize(origin);
   for (const page of pages) {
     page.isOrphan = !linkedTo.has(normalize(page.url)) && normalize(page.url) !== homepage;
+
+    if (page.error) continue;
+    const blockedByRobots = isDisallowedByRobots(page.url, robotsTxt.disallowedPaths);
+    const noindex = page.metaRobots?.includes("noindex") ?? false;
+    const canonicalizedElsewhere = Boolean(page.canonical) && normalize(page.canonical) !== normalize(page.url);
+    page.blockedByRobots = blockedByRobots;
+    page.isIndexable = page.status === 200 && !noindex && !blockedByRobots && !canonicalizedElsewhere;
   }
 
   await mkdir(DATA_DIR, { recursive: true });
   const host = new URL(origin).hostname;
   const date = new Date().toISOString().slice(0, 10);
   const outPath = path.join(DATA_DIR, `${date}-crawl-${host}.json`);
-  await writeFile(outPath, JSON.stringify({ origin, crawledAt: new Date().toISOString(), pages }, null, 2));
+  await writeFile(
+    outPath,
+    JSON.stringify({ origin, crawledAt: new Date().toISOString(), robotsTxt, pages }, null, 2)
+  );
   console.log(`Wrote ${pages.length} page(s) to ${outPath}`);
 }
 
