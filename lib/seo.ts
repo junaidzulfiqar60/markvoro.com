@@ -1,4 +1,4 @@
-export const SITE_URL = "https://www.markvoro.com";
+export const SITE_URL = "https://markvoro.com";
 export const SITE_NAME = "MARKVORO";
 
 export function absoluteUrl(path: string): string {
