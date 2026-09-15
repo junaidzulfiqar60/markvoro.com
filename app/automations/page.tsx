@@ -118,6 +118,13 @@ export default function AutomationsPage() {
                 before it goes live. Nothing runs silently; every run leaves a
                 trace you can review.
               </p>
+              <p className="text-sm leading-relaxed text-white/60 sm:text-base">
+                Once live, the workflow doesn&apos;t stay static — as your CRM
+                fields change, a new team member joins, or a step needs a
+                different escalation rule, we update the routing logic directly.
+                You&apos;re not stuck rebuilding it yourself in a tool you&apos;ve
+                never touched.
+              </p>
             </div>
           </div>
         </section>
