@@ -9,9 +9,9 @@ import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import { pricingTiers } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Pricing",
+  title: "Pricing for Marketing, Web & AI Automation",
   description:
-    "MARKVORO pricing tiers for digital marketing, web development and AI automation — scoped after a discovery call, because the right number depends on your services and integrations.",
+    "MARKVORO pricing for digital marketing, web development and AI automation — scoped after a discovery call, since cost depends on your services.",
   alternates: { canonical: "/pricing" },
 };
 

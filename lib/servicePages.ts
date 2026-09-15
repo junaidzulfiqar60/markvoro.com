@@ -27,9 +27,9 @@ export const servicePages: ServicePageContent[] = [
     name: "Search Engine Optimization",
     eyebrow: "SEO Services",
     h1: "SEO Services in Pakistan Built for Rankings That Convert",
-    metaTitle: "SEO Services in Pakistan",
+    metaTitle: "SEO Services in Pakistan for Long-Term Rankings",
     metaDescription:
-      "MARKVORO is an SEO agency in Pakistan helping businesses rank higher on Google with technical SEO, on-page optimization, local SEO and content-driven link building.",
+      "MARKVORO is an SEO agency in Pakistan helping businesses rank higher on Google with technical SEO, on-page optimization, local SEO and link building.",
     primaryKeyword: "SEO services Pakistan",
     secondaryKeywords: ["SEO agency Pakistan", "technical SEO", "local SEO Pakistan", "on-page SEO"],
     intro:
@@ -98,7 +98,7 @@ export const servicePages: ServicePageContent[] = [
     h1: "Social Media Marketing Agency in Pakistan",
     metaTitle: "Social Media Marketing Agency in Pakistan",
     metaDescription:
-      "MARKVORO is a social media marketing agency in Pakistan managing Instagram, Facebook and TikTok — strategy, content, community management and performance reporting.",
+      "MARKVORO is a social media marketing agency managing Instagram, Facebook and TikTok — strategy, content, community management and reporting.",
     primaryKeyword: "social media marketing agency Pakistan",
     secondaryKeywords: ["Instagram marketing Pakistan", "Facebook marketing", "TikTok marketing", "content strategy"],
     intro:
@@ -155,7 +155,7 @@ export const servicePages: ServicePageContent[] = [
     name: "Website Design & Development",
     eyebrow: "Web Development",
     h1: "Web Development Company in Pakistan",
-    metaTitle: "Web Development Company in Pakistan",
+    metaTitle: "Web Development Company Serving All of Pakistan",
     metaDescription:
       "MARKVORO is a website development company in Pakistan building fast, modern, conversion-focused business websites, landing pages and e-commerce stores.",
     primaryKeyword: "web development company Pakistan",
@@ -219,7 +219,7 @@ export const servicePages: ServicePageContent[] = [
     name: "Email Marketing",
     eyebrow: "Email Marketing",
     h1: "Email Marketing Services That Nurture and Retain Customers",
-    metaTitle: "Email Marketing Services",
+    metaTitle: "Email Marketing Services for Growing Businesses",
     metaDescription:
       "MARKVORO builds email marketing campaigns and automation sequences that nurture leads, retain customers and drive repeat revenue for growing businesses.",
     primaryKeyword: "email marketing agency Pakistan",
@@ -332,9 +332,9 @@ export const servicePages: ServicePageContent[] = [
     name: "AI Agent Development & Business Automation",
     eyebrow: "AI Automation",
     h1: "AI Automation Agency in Pakistan — Custom AI Agents for Business",
-    metaTitle: "AI Automation Agency in Pakistan",
+    metaTitle: "AI Automation Agency in Pakistan for Business",
     metaDescription:
-      "MARKVORO is an AI automation agency in Pakistan and AI agent development company building custom AI sales, support, WhatsApp and booking agents for real businesses.",
+      "MARKVORO is an AI automation agency in Pakistan building custom AI sales, support, WhatsApp and booking agents for real Pakistani businesses to run on.",
     primaryKeyword: "AI automation agency Pakistan",
     secondaryKeywords: [
       "AI agent development company Pakistan",
