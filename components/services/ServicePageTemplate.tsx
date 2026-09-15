@@ -32,6 +32,23 @@ export default function ServicePageTemplate({ data }: { data: ServicePageContent
           ]}
         />
 
+        {data.approach.length > 0 && (
+          <section className="relative py-10 sm:py-16">
+            <div className="section-padding container-max">
+              <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
+                Our Approach
+              </h2>
+              <div className="mt-6 max-w-3xl space-y-4">
+                {data.approach.map((paragraph, i) => (
+                  <p key={i} className="text-sm leading-relaxed text-white/60 sm:text-base">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         <section className="relative py-10 sm:py-16">
           <div className="section-padding container-max">
             <div className="flex items-center gap-3">
