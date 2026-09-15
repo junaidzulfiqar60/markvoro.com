@@ -9,7 +9,7 @@ import FinalCTA from "@/components/sections/FinalCTA";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About Us — Our Story and How We Got Here",
   description:
     "MARKVORO is a digital marketing, web development and AI automation agency in Pakistan built around strategy, creativity and intelligent technology.",
   alternates: { canonical: "/about" },

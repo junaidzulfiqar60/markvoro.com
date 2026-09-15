@@ -59,6 +59,9 @@ If you want a straight answer for your specific project, [our web development te
     title: "AI Agents for Small Business: What They Are and How They Actually Help",
     excerpt:
       "Beyond the buzzword — a practical look at what an AI agent does, where it genuinely saves a small business time, and where it doesn't.",
+    metaTitle: "AI Agents for Small Business: What They Do",
+    metaDescription:
+      "Beyond the buzzword — a practical look at what an AI agent does, where it genuinely saves a small business time, and where it doesn't help at all.",
     category: "AI & Automation",
     tags: ["AI agents", "automation", "customer support"],
     author: "MARKVORO Team",
@@ -95,6 +98,9 @@ If you're trying to figure out which part of your workflow is the right place to
     title: "The SEO Checklist Every Small Business in Pakistan Should Run Through",
     excerpt:
       "A practical, no-nonsense SEO checklist for small business owners — the fundamentals that actually move the needle before anything fancier.",
+    metaTitle: "The SEO Checklist for Small Business Owners",
+    metaDescription:
+      "A practical, no-nonsense SEO checklist for small business owners in Pakistan — the fundamentals that actually move the needle before anything fancier.",
     category: "SEO",
     tags: ["SEO", "local SEO", "small business"],
     author: "MARKVORO Team",
@@ -128,6 +134,9 @@ If you'd rather have someone audit your specific site against this list, [our SE
     title: "Facebook Ads vs Google Ads: Which Should You Run First?",
     excerpt:
       "Both platforms work — but they solve different problems. Here's how to decide which one deserves your budget first.",
+    metaTitle: "Facebook Ads vs Google Ads: Which First?",
+    metaDescription:
+      "Both platforms work, but they solve different problems for a business. Here's a practical way to decide which one deserves your budget first.",
     category: "Paid Advertising",
     tags: ["Facebook ads", "Google ads", "paid advertising"],
     author: "MARKVORO Team",

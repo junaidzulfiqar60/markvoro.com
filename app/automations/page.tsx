@@ -10,9 +10,9 @@ import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import { automationSteps, automationOutcomes } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Business Automation & Workflow Systems",
+  title: "Business Automation & Workflow Systems Built",
   description:
-    "How MARKVORO builds AI automation workflows in Pakistan — one trigger fans out across your CRM, inbox, WhatsApp and calendar, with an AI agent making the routing decisions.",
+    "How MARKVORO builds AI automation workflows in Pakistan — one trigger fans out across your CRM, inbox, WhatsApp and calendar via an AI routing agent.",
   alternates: { canonical: "/automations" },
 };
 

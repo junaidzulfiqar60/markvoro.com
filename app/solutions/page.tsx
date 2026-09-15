@@ -11,9 +11,9 @@ import { getServices } from "@/lib/content";
 import { servicePages } from "@/lib/servicePages";
 
 export const metadata: Metadata = {
-  title: "Digital Marketing & AI Automation Solutions in Pakistan",
+  title: "Digital Marketing & AI Automation Solutions",
   description:
-    "Digital marketing, web development and AI automation solutions from MARKVORO — SEO, social media, paid ads, websites and custom AI agents, built as one connected system.",
+    "Digital marketing, web development and AI automation from MARKVORO — SEO, social media, paid ads, websites and custom AI agents, built as one system.",
   alternates: { canonical: "/solutions" },
 };
 

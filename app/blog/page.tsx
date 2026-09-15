@@ -12,9 +12,9 @@ import { getBlogPosts } from "@/lib/content";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Digital Marketing, SEO & AI Automation Blog",
   description:
-    "Practical guides on digital marketing, web development, SEO and AI automation for businesses in Pakistan — from the MARKVORO team.",
+    "Practical guides on digital marketing, web development, SEO and AI automation for growing businesses in Pakistan, written by the MARKVORO team.",
   alternates: { canonical: "/blog" },
 };
 

@@ -7,9 +7,9 @@ import FAQ from "@/components/sections/FAQ";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact Us to Start Your Next Growth Project",
   description:
-    "Tell MARKVORO about your business — get a custom digital marketing, web development and AI automation strategy. We reply within 24 hours.",
+    "Tell MARKVORO about your business — get a custom digital marketing, web development and AI automation strategy back. We reply within 24 hours.",
   alternates: { canonical: "/contact" },
 };
 

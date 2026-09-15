@@ -17,9 +17,9 @@ import Contact from "@/components/sections/Contact";
 import { getServices, getPortfolioProjects, getTestimonials, getBlogPosts } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Digital Marketing Agency in Pakistan",
+  title: "Digital Marketing & AI Automation Agency in Pakistan",
   description:
-    "MARKVORO is a digital marketing agency in Pakistan offering SEO, social media marketing, Google & Facebook ads, web development and custom AI agent development for ambitious businesses.",
+    "MARKVORO is a digital marketing agency in Pakistan offering SEO, social media, paid ads, web development and AI agent development for ambitious businesses.",
   alternates: { canonical: "/" },
 };
 

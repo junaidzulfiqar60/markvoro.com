@@ -8,9 +8,9 @@ import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import { industries } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Industries We Serve",
+  title: "Industries We Serve Across All of Pakistan",
   description:
-    "MARKVORO builds marketing and AI automation systems for real estate, e-commerce, restaurants, home services, healthcare, education and more businesses across Pakistan.",
+    "MARKVORO builds marketing and AI automation systems for real estate, e-commerce, restaurants, home services, healthcare and education businesses.",
   alternates: { canonical: "/industries" },
 };
 

@@ -8,9 +8,9 @@ import FinalCTA from "@/components/sections/FinalCTA";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 
 export const metadata: Metadata = {
-  title: "AI Customer Support & Sales Agents",
+  title: "AI Customer Support & Sales Agents in Pakistan",
   description:
-    "Custom AI Sales, Support, Booking, WhatsApp and Receptionist agents from MARKVORO — trained on your business, live on your channels. See pricing and scope on our AI agent development service.",
+    "Custom AI Sales, Support, Booking and WhatsApp agents from MARKVORO — trained on your business, live on your channels, with pricing on our AI service page.",
   alternates: { canonical: "/ai-agents" },
 };
 

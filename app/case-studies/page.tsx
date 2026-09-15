@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import { caseStudies } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Case Studies",
+  title: "Case Studies from Our Real Client Builds",
   description:
     "Reference builds showing how MARKVORO's AI agents and automation systems change day-to-day operations for real estate, e-commerce and home services businesses.",
   alternates: { canonical: "/case-studies" },
