@@ -15,6 +15,24 @@ export const metadata: Metadata = {
   alternates: { canonical: "/case-studies" },
 };
 
+const caseStudiesFaqs = [
+  {
+    question: "Are these real, named clients?",
+    answer:
+      "No — these are reference architectures describing the problem, the system we'd build and the operational change it produces, not results attributed to a specific named client. We built them this way so you can evaluate the approach without us disclosing another business's private data.",
+  },
+  {
+    question: "How is a new reference build scoped for my business?",
+    answer:
+      "The same way as any engagement — a discovery call where we map your actual enquiry channels, qualifying criteria and existing tools, then design the system around that rather than adapting one of the builds above.",
+  },
+  {
+    question: "What do these three examples have in common?",
+    answer:
+      "Each one replaces a manual, single-channel process (a callback, a support ticket, an office-hours-only reply) with an AI agent that responds immediately and hands off to a human only when a conversation genuinely needs one — the pattern behind most of what we build, regardless of industry.",
+  },
+];
+
 export default function CaseStudiesPage() {
   return (
     <>
@@ -33,6 +51,30 @@ export default function CaseStudiesPage() {
         />
 
         <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Case Studies", href: "/case-studies" }]} />
+
+        <section className="relative py-10 sm:py-16">
+          <div className="section-padding container-max">
+            <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
+              What These Builds Have in Common
+            </h2>
+            <div className="mt-6 max-w-3xl space-y-4">
+              <p className="text-sm leading-relaxed text-white/60 sm:text-base">
+                Every reference build below starts from the same place: a real bottleneck that was
+                being handled manually — enquiries triaged by hand across three inboxes, a support
+                queue full of the same repeat questions, a missed call that meant a missed job.
+                None of them started from a template; each system was mapped around the specific
+                channels, tools and qualifying criteria that business already had in place.
+              </p>
+              <p className="text-sm leading-relaxed text-white/60 sm:text-base">
+                What changed afterward follows the same shape too — an AI agent takes the first
+                response instantly, on whatever channel the enquiry actually arrived on, and hands
+                off to a person only once a conversation genuinely needs one. The &quot;Before/
+                After&quot; breakdown on each build below shows exactly what that looks like in
+                practice.
+              </p>
+            </div>
+          </div>
+        </section>
 
         <section className="relative py-10 sm:py-16">
           <div className="section-padding container-max space-y-8">
@@ -105,6 +147,26 @@ export default function CaseStudiesPage() {
             </p>
           </div>
         </section>
+
+        {caseStudiesFaqs.length > 0 && (
+          <section className="relative py-16 sm:py-24">
+            <div className="section-padding container-max">
+              <h2 className="text-center font-display text-2xl font-bold text-white sm:text-3xl">
+                Case Studies FAQs
+              </h2>
+              <div className="mx-auto mt-10 max-w-3xl divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/[0.02]">
+                {caseStudiesFaqs.map((faq) => (
+                  <div key={faq.question} className="px-6 py-6 sm:px-8">
+                    <h3 className="font-display text-sm font-semibold text-white sm:text-base">
+                      {faq.question}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-white/55">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         <FinalCTA />
       </main>
