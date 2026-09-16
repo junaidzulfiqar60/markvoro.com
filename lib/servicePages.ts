@@ -454,6 +454,74 @@ export const servicePages: ServicePageContent[] = [
     ],
     relatedSlugs: ["web-development", "email-marketing"],
   },
+  {
+    slug: "content-marketing",
+    name: "Content Marketing",
+    eyebrow: "Content Marketing",
+    h1: "Content That Moves People Through Your Funnel, Not Just Fills a Calendar",
+    metaTitle: "Content Marketing Agency Serving All of Pakistan",
+    metaDescription:
+      "MARKVORO is a content marketing agency in Pakistan producing blog writing, copywriting, social content and video scripts that inform, engage and convert.",
+    primaryKeyword: "content marketing agency Pakistan",
+    secondaryKeywords: ["blog writing services", "copywriting agency Pakistan", "content strategy", "AI content production"],
+    intro:
+      "MARKVORO is a content marketing agency in Pakistan producing blog writing, copywriting, social content, video scripts and AI-assisted production — content built around what your business actually needs it to do, not a calendar to keep full.",
+    approach: [
+      "Every content engagement starts by mapping what your business actually needs content to do — build search visibility, warm up leads before a sales conversation, or support paid campaigns with real creative — instead of producing generic blog posts because a content calendar says to. We look at what's already working, or not, across your site and social channels before adding anything new.",
+      "From there we work in a monthly production cycle: a content calendar built around real dates and goals, drafts reviewed against your brand voice before anything publishes, and performance checked against what each piece was actually meant to do — rankings, leads or engagement — not just impressions.",
+    ],
+    icon: "PenTool",
+    includes: [
+      {
+        title: "Blog Writing",
+        description:
+          "Search-intent-driven articles that bring in organic traffic and support your SEO strategy. Every post is written around a real keyword and a real reader question, not published just to keep a content calendar full.",
+      },
+      {
+        title: "Copywriting",
+        description:
+          "Website copy, ad copy and sales pages written to convert, not just read well. Copy is written around the specific action you want a reader to take next, not generic brand messaging.",
+      },
+      {
+        title: "Social Media Content",
+        description:
+          "Captions, carousels and short-form scripts that match your brand voice across every platform. Produced to plug directly into your social media marketing calendar, not as a separate, disconnected workstream.",
+      },
+      {
+        title: "Video Scripts",
+        description:
+          "Scripts for Reels, YouTube and ad creative, written to hold attention from the first few seconds. Structured around how people actually watch short-form video, not written to be read rather than watched.",
+      },
+      {
+        title: "AI Content Production",
+        description:
+          "AI-assisted drafting and production for scale, always reviewed by a person before anything publishes. AI speeds up first drafts and production; a person still reviews everything before it represents your brand.",
+      },
+      {
+        title: "Content Strategy",
+        description:
+          "A content plan built around your actual funnel stages and goals, not a generic posting calendar. Every piece is mapped to a stage of your funnel, so content has a clear job instead of existing for its own sake.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What does a content marketing agency actually deliver?",
+        answer:
+          "Blog posts, website and ad copy, social content, video scripts and an overall content strategy — built around what your business specifically needs, whether that's organic traffic, warmer leads, or better-converting ad creative. You'll see a real content calendar and real drafts, not a vague retainer.",
+      },
+      {
+        question: "How is this different from just hiring a freelance writer?",
+        answer:
+          "A freelance writer produces individual pieces; MARKVORO runs content as one coordinated system tied to your SEO, social and paid strategy — so a blog post is written to also support a keyword your SEO work is targeting, and social captions match what's running in paid campaigns.",
+      },
+      {
+        question: "Does MARKVORO write the content or just plan it?",
+        answer:
+          "Both — we handle strategy and production end-to-end, including AI-assisted drafting for scale, with every piece reviewed by a person before it goes live. You approve content before it publishes, and can provide your own source material or expertise any time you have it.",
+      },
+    ],
+    relatedSlugs: ["social-media-marketing", "seo"],
+  },
 ];
 
 export function getServicePage(slug: string): ServicePageContent | undefined {
