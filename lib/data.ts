@@ -163,6 +163,7 @@ export const services: Service[] = [
       "Performance Tracking",
       "Commission Systems",
     ],
+    slug: "affiliate-marketing",
   },
   {
     number: "09",
@@ -177,6 +178,7 @@ export const services: Service[] = [
       "UGC Content",
       "Performance Tracking",
     ],
+    slug: "influencer-marketing",
   },
   {
     number: "10",
