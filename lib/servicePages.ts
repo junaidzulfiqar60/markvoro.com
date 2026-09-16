@@ -653,6 +653,127 @@ export const servicePages: ServicePageContent[] = [
     ],
     relatedSlugs: ["ai-agents", "content-marketing"],
   },
+  {
+    slug: "affiliate-marketing",
+    name: "Affiliate Marketing",
+    eyebrow: "Affiliate Marketing",
+    h1: "Partner and Affiliate Programs Built to Scale With Performance",
+    metaTitle: "Affiliate Marketing Program Management Pakistan",
+    metaDescription:
+      "MARKVORO builds and manages affiliate and partner programs in Pakistan — program setup, partner management, performance tracking and commission systems.",
+    primaryKeyword: "affiliate marketing agency Pakistan",
+    secondaryKeywords: ["affiliate program management", "partner marketing Pakistan", "commission tracking"],
+    intro:
+      "MARKVORO builds and manages affiliate and partner marketing programs for businesses that already have a customer base and want a structured, performance-based way to extend their reach — program setup, partner recruitment, performance tracking and commission management, run as one system rather than a loose list of referral deals.",
+    approach: [
+      "We start by checking that an affiliate program is actually the right fit before building one — it works best for businesses with a proven product, a repeatable sale, and existing traction, not as a first growth channel for something unproven. If that's not where you are yet, we'll say so rather than sell you a program that won't produce results.",
+      "Once it's the right fit, we set up clear program terms and commission structures, recruit and vet partners who genuinely match your audience, and put tracking in place so every referred sale is attributed correctly — then manage the relationship on an ongoing basis so partners stay active instead of signing up once and going quiet.",
+    ],
+    icon: "Users",
+    includes: [
+      {
+        title: "Affiliate Program Setup",
+        description:
+          "Commission structure, program terms and tracking infrastructure set up correctly from day one. We scope the program around what your margins can actually support, not a generic commission percentage copied from another industry.",
+      },
+      {
+        title: "Partner Management",
+        description:
+          "Recruiting and managing affiliates who genuinely match your audience, not just anyone willing to sign up. Ongoing relationship management keeps active partners engaged instead of a list of sign-ups that never actually promote you.",
+      },
+      {
+        title: "Performance Tracking",
+        description:
+          "Every referred visit, lead and sale tracked and attributed to the right partner, so payouts and results are never a guessing game.",
+      },
+      {
+        title: "Commission Systems",
+        description:
+          "Payout structures and tracking set up to be transparent and reliable for your partners, which is what keeps good affiliates actively promoting you instead of moving on to a program that pays out more predictably.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Do I need existing customers before starting an affiliate program?",
+        answer:
+          "Yes, generally — affiliate marketing works best once you have a proven product and a repeatable sale that partners can confidently promote. If you're still validating your offer, we'll usually recommend a different channel first and revisit affiliate marketing once you have that traction.",
+      },
+      {
+        question: "How are commissions tracked and paid?",
+        answer:
+          "We set up tracking so every referred visit, lead or sale is correctly attributed to the partner who sent it, with a clear, agreed payout structure and schedule — so both you and your partners always know exactly what's owed and why.",
+      },
+      {
+        question: "How is this different from influencer marketing?",
+        answer:
+          "Affiliate marketing is performance-based — partners earn a commission tied directly to sales or leads they generate. Influencer marketing is typically a paid or gifted partnership focused on awareness and reach rather than a direct commission structure. See our influencer marketing services for that side of partner-driven growth.",
+      },
+    ],
+    relatedSlugs: ["influencer-marketing", "social-media-marketing"],
+  },
+  {
+    slug: "influencer-marketing",
+    name: "Influencer Marketing",
+    eyebrow: "Influencer Marketing",
+    h1: "Connect With the Voices Your Customers Already Trust",
+    metaTitle: "Influencer Marketing Agency in Pakistan",
+    metaDescription:
+      "MARKVORO is an influencer marketing agency in Pakistan handling influencer research, outreach, campaign management, UGC content and performance tracking.",
+    primaryKeyword: "influencer marketing agency Pakistan",
+    secondaryKeywords: ["influencer outreach Pakistan", "UGC content", "creator partnerships"],
+    intro:
+      "MARKVORO is an influencer marketing agency in Pakistan connecting brands with the creators their customers already follow and trust — influencer research, outreach, campaign management and UGC content, run as a coordinated campaign rather than a handful of one-off paid posts.",
+    approach: [
+      "We start with your audience, not a list of the biggest names in a category — the right influencer for a business is whoever their specific customers actually trust and pay attention to, which is often a smaller, more engaged creator rather than the account with the largest follower count. Fit and audience overlap matter more than reach alone.",
+      "Campaigns are planned around a clear goal — awareness, launch buzz, or ongoing UGC supply for your other channels — and we handle outreach, briefing and coordination so creators represent your brand accurately without producing content that feels like a scripted ad read. The content produced doesn't have to live only on the creator's account either — with the right agreement in place, it becomes reusable material for your own paid and organic channels long after the original post.",
+    ],
+    icon: "Star",
+    includes: [
+      {
+        title: "Influencer Research",
+        description:
+          "Identifying creators whose actual audience overlaps with your customers, not just accounts with a large follower count. We look at engagement quality and audience fit before follower count, since a smaller, well-matched creator often converts better.",
+      },
+      {
+        title: "Outreach",
+        description:
+          "Direct, professional outreach and negotiation, so partnerships start on clear terms both sides understand from the outset.",
+      },
+      {
+        title: "Campaign Management",
+        description:
+          "Briefing, coordination and timeline management across every creator in a campaign, so content goes live on schedule and stays on message.",
+      },
+      {
+        title: "UGC Content",
+        description:
+          "Authentic, creator-produced content that can be repurposed across your own paid and organic social channels, not locked to the creator's account alone.",
+      },
+      {
+        title: "Performance Tracking",
+        description:
+          "Reach, engagement and conversion tracked per creator and per campaign, so future partnerships are based on what actually worked, not a guess.",
+      },
+    ],
+    faqs: [
+      {
+        question: "How do you find the right influencers for my business?",
+        answer:
+          "We start from your actual audience and look for creators whose followers genuinely overlap with your customers — prioritizing engagement quality and audience fit over raw follower count, since a smaller, well-matched creator usually converts better than a broad, mismatched one.",
+      },
+      {
+        question: "Is this only for consumer brands?",
+        answer:
+          "It's most common for consumer and lifestyle brands, but it also works for service businesses with the right creator fit — local businesses, hospitality and professional services have all used creator partnerships effectively when the audience match is genuine.",
+      },
+      {
+        question: "How is influencer content measured?",
+        answer:
+          "We track reach, engagement and conversions per creator and per campaign, so you know which partnerships are actually driving results — not just impressions — and can double down on what's working for future campaigns.",
+      },
+    ],
+    relatedSlugs: ["paid-advertising", "affiliate-marketing"],
+  },
 ];
 
 export function getServicePage(slug: string): ServicePageContent | undefined {
