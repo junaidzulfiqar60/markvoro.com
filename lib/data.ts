@@ -101,6 +101,7 @@ export const services: Service[] = [
       "AI Content Production",
       "Content Strategy",
     ],
+    slug: "content-marketing",
   },
   {
     number: "05",
