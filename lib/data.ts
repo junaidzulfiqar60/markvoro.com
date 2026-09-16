@@ -117,6 +117,7 @@ export const services: Service[] = [
       "Brand Guidelines",
       "Marketing Materials",
     ],
+    slug: "branding-creative-design",
   },
   {
     number: "06",
@@ -190,6 +191,7 @@ export const services: Service[] = [
       "AI Voiceovers",
       "AI-Powered Content Production",
     ],
+    slug: "ai-content-creation",
   },
 ];
 

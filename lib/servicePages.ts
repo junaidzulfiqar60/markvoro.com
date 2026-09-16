@@ -522,6 +522,137 @@ export const servicePages: ServicePageContent[] = [
     ],
     relatedSlugs: ["social-media-marketing", "seo"],
   },
+  {
+    slug: "branding-creative-design",
+    name: "Branding & Creative Design",
+    eyebrow: "Branding & Creative Design",
+    h1: "A Visual Identity Built to Be Instantly Recognizable",
+    metaTitle: "Branding & Creative Design Agency in Pakistan",
+    metaDescription:
+      "MARKVORO is a branding and creative design agency in Pakistan building logos, brand identities, guidelines and creative assets that work across every channel.",
+    primaryKeyword: "branding & creative design agency Pakistan",
+    secondaryKeywords: ["logo design Pakistan", "brand identity design", "brand guidelines", "creative design agency"],
+    intro:
+      "MARKVORO is a branding and creative design agency in Pakistan building visual identities — logos, brand systems, guidelines and creative assets — that make a business instantly recognizable across its website, ads, social channels and everything in between.",
+    approach: [
+      "We start by figuring out whether you need a full identity built from scratch or a focused refresh of what already exists — most businesses don't need to reinvent everything, and treating a simple update like a full rebrand wastes budget and creates unnecessary inconsistency along the way.",
+      "Every identity is designed to actually be used, not just look good in a presentation deck: logo variations for different placements, a clear color and type system, and guidelines your team (or ours) can apply consistently across ads, social posts and the website — so the identity holds together everywhere it appears, not just on the page it was designed on.",
+    ],
+    icon: "Palette",
+    includes: [
+      {
+        title: "Logo Design",
+        description:
+          "A primary logo plus the variations (icon-only, horizontal, dark/light) a real business actually needs across different placements. Delivered in the file formats your website, print and social channels each require, not a single flat image.",
+      },
+      {
+        title: "Brand Identity",
+        description:
+          "Color palette, typography and visual style built to be distinct in your specific market, not a template with your name on it. The system is built to hold up as your business adds new channels and formats over time, not just the first few assets.",
+      },
+      {
+        title: "Social Media Graphics",
+        description:
+          "Templates and one-off graphics that keep your feed visually consistent without redesigning from zero every post. Built to plug directly into your social media marketing calendar, not as a disconnected design request.",
+      },
+      {
+        title: "Advertising Creatives",
+        description:
+          "Ad creative for Meta and Google campaigns that carries the same identity as your organic content. Designed alongside your paid advertising strategy, so creative and targeting are never working from different playbooks.",
+      },
+      {
+        title: "Brand Guidelines",
+        description:
+          "A practical reference document — logo usage, colors, type, tone — so your identity stays consistent as your team or agency partners grow. Written to actually be followed, not a 40-page PDF nobody opens after week one.",
+      },
+      {
+        title: "Marketing Materials",
+        description:
+          "Brochures, presentation decks, signage and other offline or sales-facing materials designed to match your digital identity. Keeps your business looking like one consistent brand across every touchpoint, online and off.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Do I need a full rebrand or just updated creative assets?",
+        answer:
+          "It depends on what's actually not working — a logo and color system that's still solid but lacks supporting assets needs a different scope than an identity that no longer represents the business. We'll tell you honestly which one your business needs during discovery, rather than defaulting to the larger (and more expensive) option.",
+      },
+      {
+        question: "Will my new branding tie into my ads and website?",
+        answer:
+          "Yes — every identity is built to carry through to paid ad creative, social content and web design, and we coordinate directly with those teams (or yours) so the look stays consistent everywhere it shows up, not just in the initial logo file.",
+      },
+      {
+        question: "What do I need to provide to get started?",
+        answer:
+          "A short discovery call covering your business, audience and any existing brand assets is usually enough to start — if you have past creative, competitor references, or a rough idea of the direction you like, that helps, but none of it is required upfront.",
+      },
+    ],
+    relatedSlugs: ["web-development", "social-media-marketing"],
+  },
+  {
+    slug: "ai-content-creation",
+    name: "AI Content Creation",
+    eyebrow: "AI Content Creation",
+    h1: "Scale Content Production Without Scaling Headcount",
+    metaTitle: "AI Content Creation Services in Pakistan",
+    metaDescription:
+      "MARKVORO delivers AI content creation services in Pakistan — AI video, image and voiceover production plus AI-powered advertising creatives, human-reviewed.",
+    primaryKeyword: "AI content creation services Pakistan",
+    secondaryKeywords: ["AI video generation", "AI image creation", "AI voiceovers", "AI advertising creatives"],
+    intro:
+      "MARKVORO delivers AI content creation services in Pakistan — AI-generated video, image and voiceover production, plus AI-assisted advertising creatives — built to scale how much content your business can produce without scaling your team, with every piece reviewed by a person before it goes live.",
+    approach: [
+      "We use AI tools to speed up production, not to replace judgment — every AI-generated video, image or voiceover is produced against your actual brand guidelines and reviewed by a person before it ships, the same standard we hold any other creative work to. The goal is more usable output per week, not more unreviewed output.",
+      "This is a distinct service from our AI agents: AI content creation produces the video, image, ad and voiceover assets your marketing runs on, while AI agents are customer-facing automation that responds to leads and support conversations. Businesses often use both, but they solve different problems, are scoped separately, and show up as two different line items on any proposal — never bundled together to inflate a single deliverable.",
+    ],
+    icon: "Sparkles",
+    includes: [
+      {
+        title: "AI Video Generation",
+        description:
+          "Short-form video and ad creative produced with AI tools, scripted and reviewed to match your brand voice before publishing. Used to increase output for formats like Reels and ad creative without a full production crew for every piece.",
+      },
+      {
+        title: "AI Image Creation",
+        description:
+          "Product shots, ad visuals and social graphics generated and refined for a specific use case, not generic stock replacements. Every image is checked against your actual brand identity before it's approved for use.",
+      },
+      {
+        title: "AI Advertising Creatives",
+        description:
+          "Ad variations produced faster for testing across Meta and Google campaigns, so more creative directions get tested without a proportional increase in production cost.",
+      },
+      {
+        title: "AI Voiceovers",
+        description:
+          "Voiceover tracks for video and ad content, produced in the tone and language your audience expects, reviewed for accuracy before use.",
+      },
+      {
+        title: "AI-Powered Content Production",
+        description:
+          "AI used across the broader content workflow — drafting, ideation, first-pass production — to increase how much your content and social teams can ship, always with a human final review before anything publishes.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Is this different from the AI agents on your other page?",
+        answer:
+          "Yes — AI content creation produces marketing assets (video, image, voiceover, ad creative) that your team uses in campaigns. AI agents are customer-facing automation that responds to leads and support conversations directly. See our AI agents page for that service.",
+      },
+      {
+        question: "Does AI content still get reviewed by a person?",
+        answer:
+          "Always. AI speeds up production and first drafts, but every asset is reviewed against your brand guidelines by a person before it publishes — nothing goes live unchecked.",
+      },
+      {
+        question: "What formats can be produced?",
+        answer:
+          "Short-form video, static and animated images, ad creative variations and voiceover tracks — scoped to whatever your campaigns and content calendar actually need, not a fixed content package.",
+      },
+    ],
+    relatedSlugs: ["ai-agents", "content-marketing"],
+  },
 ];
 
 export function getServicePage(slug: string): ServicePageContent | undefined {
