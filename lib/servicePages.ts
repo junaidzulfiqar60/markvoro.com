@@ -191,7 +191,13 @@ export const servicePages: ServicePageContent[] = [
     metaDescription:
       "MARKVORO is a website development company in Pakistan building fast, modern, conversion-focused business websites, landing pages and e-commerce stores.",
     primaryKeyword: "web development company Pakistan",
-    secondaryKeywords: ["website development Pakistan", "business website design", "e-commerce website Pakistan"],
+    secondaryKeywords: [
+      "website development Pakistan",
+      "business website design",
+      "e-commerce website Pakistan",
+      "Next.js development company Pakistan",
+      "React web development company Pakistan",
+    ],
     intro:
       "MARKVORO is a web development company in Pakistan building fast, modern, conversion-focused websites — from business sites and landing pages to full e-commerce stores — engineered to turn visitors into customers, not just look good.",
     approach: [
@@ -230,6 +236,11 @@ export const servicePages: ServicePageContent[] = [
         description:
           "Optional custom admin dashboards so you can manage leads, content and inquiries without touching code. Built only when you actually need to manage content or leads yourself — not added by default to every project.",
       },
+      {
+        title: "Modern Tech Stack (Next.js & React)",
+        description:
+          "Built on Next.js and React rather than a templated WordPress theme — faster page loads, cleaner code to maintain, and none of the plugin bloat that slows most small-business sites down over time.",
+      },
     ],
     faqs: [
       {
@@ -251,6 +262,11 @@ export const servicePages: ServicePageContent[] = [
         question: "Do you provide hosting, or do we need our own?",
         answer:
           "We can set up and manage hosting for you, or work with hosting you already have — either way, we'll make sure the site is deployed on infrastructure that supports the speed and uptime the build was designed for.",
+      },
+      {
+        question: "What technology do you build websites with?",
+        answer:
+          "Next.js and React as the default stack — modern, fast, and built to scale, rather than a page-builder theme on top of WordPress. We'll discuss the right fit for your project on the discovery call if your situation calls for something else.",
       },
     ],
     relatedSlugs: ["seo", "ai-agents"],
