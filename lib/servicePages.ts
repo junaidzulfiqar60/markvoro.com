@@ -35,7 +35,14 @@ export const servicePages: ServicePageContent[] = [
     metaDescription:
       "MARKVORO is an SEO agency in Pakistan helping businesses rank higher on Google with technical SEO, on-page optimization, local SEO and link building.",
     primaryKeyword: "SEO services Pakistan",
-    secondaryKeywords: ["SEO agency Pakistan", "technical SEO", "local SEO Pakistan", "on-page SEO", "ecommerce SEO Pakistan"],
+    secondaryKeywords: [
+      "SEO agency Pakistan",
+      "technical SEO",
+      "local SEO Pakistan",
+      "on-page SEO",
+      "ecommerce SEO Pakistan",
+      "off-page SEO Pakistan",
+    ],
     intro:
       "MARKVORO provides SEO services in Pakistan for businesses that want consistent, compounding organic traffic — not a one-time ranking spike. As an SEO agency, we combine technical fixes, on-page optimization, local SEO and content-driven link building into one connected strategy built around how your customers actually search.",
     approach: [
@@ -65,7 +72,7 @@ export const servicePages: ServicePageContent[] = [
           "Commercially relevant keyword mapping — prioritizing terms your customers actually use, not just high-volume vanity terms. Each keyword is mapped to search intent and a specific page, so traffic that lands actually matches what you sell.",
       },
       {
-        title: "Content-Driven Link Building",
+        title: "Off-Page SEO & Link Building",
         description:
           "Earning authority through genuinely useful content and outreach, never spammy or purchased links. We only pursue links that a real editor would publish on their own judgment — nothing purchased, nothing automated.",
       },
