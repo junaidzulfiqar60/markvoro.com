@@ -91,14 +91,16 @@ async function runComparePeriods(client, days) {
   // Two named ranges in one request — GA4 appends an implicit "dateRange"
   // dimension (values "date_range_0"/"date_range_1", in request order)
   // after the requested dimensions, so both periods come back pre-aligned
-  // for a like-for-like diff instead of two separate report shapes.
+  // for a like-for-like diff instead of two separate report shapes. This
+  // implicit dimension must NOT also be listed in `dimensions` — the API
+  // rejects that with "Field dateRange is not a dimension".
   const [response] = await client.runReport({
     property: `properties/${propertyId}`,
     dateRanges: [
       { startDate: `${days}daysAgo`, endDate: "today", name: "lastPeriod" },
       { startDate: `${days * 2}daysAgo`, endDate: `${days + 1}daysAgo`, name: "previousPeriod" },
     ],
-    dimensions: [...DIMENSIONS, { name: "dateRange" }],
+    dimensions: DIMENSIONS,
     metrics: METRICS,
     dimensionFilter: ORGANIC_FILTER,
     limit: 5000,
