@@ -35,7 +35,7 @@ export const servicePages: ServicePageContent[] = [
     metaDescription:
       "MARKVORO is an SEO agency in Pakistan helping businesses rank higher on Google with technical SEO, on-page optimization, local SEO and link building.",
     primaryKeyword: "SEO services Pakistan",
-    secondaryKeywords: ["SEO agency Pakistan", "technical SEO", "local SEO Pakistan", "on-page SEO"],
+    secondaryKeywords: ["SEO agency Pakistan", "technical SEO", "local SEO Pakistan", "on-page SEO", "ecommerce SEO Pakistan"],
     intro:
       "MARKVORO provides SEO services in Pakistan for businesses that want consistent, compounding organic traffic — not a one-time ranking spike. As an SEO agency, we combine technical fixes, on-page optimization, local SEO and content-driven link building into one connected strategy built around how your customers actually search.",
     approach: [
@@ -70,6 +70,11 @@ export const servicePages: ServicePageContent[] = [
           "Earning authority through genuinely useful content and outreach, never spammy or purchased links. We only pursue links that a real editor would publish on their own judgment — nothing purchased, nothing automated.",
       },
       {
+        title: "Ecommerce SEO",
+        description:
+          "Category and product page structure, filtered/faceted navigation that doesn't fragment your crawl budget, and product schema — built for stores where rankings, not just traffic, are what drive revenue. Works alongside our e-commerce website builds, but applies just as well to a store MARKVORO didn't build.",
+      },
+      {
         title: "Monthly Reporting",
         description:
           "Clear reporting on rankings, organic traffic and technical health, so you always know what's working. You'll always know which fixes shipped, which are in progress, and what moved as a result.",
@@ -100,6 +105,11 @@ export const servicePages: ServicePageContent[] = [
         question: "What does an SEO audit from MARKVORO actually check?",
         answer:
           "A full technical crawl (indexability, status codes, Core Web Vitals), an on-page review (titles, meta descriptions, heading structure, internal linking) and a content review against real search intent — the same checklist we use internally, not a generic template.",
+      },
+      {
+        question: "Do you handle SEO for online stores specifically?",
+        answer:
+          "Yes. Ecommerce SEO covers category and product page structure, faceted-navigation cleanup, and product schema — the parts of a store that general on-page SEO doesn't fully address, and that matter directly for revenue, not just traffic.",
       },
     ],
     relatedSlugs: ["paid-advertising", "web-development"],
