@@ -31,17 +31,6 @@ export const metadata: Metadata = {
   },
   description:
     "MARKVORO is a digital marketing agency in Pakistan offering SEO, social media marketing, Google & Facebook ads, web development and AI agent development — helping ambitious businesses grow through strategy, creativity and intelligent technology.",
-  keywords: [
-    "digital marketing agency Pakistan",
-    "SEO agency Pakistan",
-    "social media marketing agency Pakistan",
-    "web development company Pakistan",
-    "AI automation agency Pakistan",
-    "AI agent development company Pakistan",
-    "Google Ads agency Pakistan",
-    "Facebook advertising agency Pakistan",
-    "MARKVORO",
-  ],
   alternates: {
     canonical: "/",
   },
