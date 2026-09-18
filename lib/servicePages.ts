@@ -343,9 +343,16 @@ export const servicePages: ServicePageContent[] = [
     metaDescription:
       "MARKVORO is a Facebook advertising and Google Ads agency in Pakistan running performance-driven paid campaigns with full conversion tracking.",
     primaryKeyword: "Facebook advertising agency Pakistan",
-    secondaryKeywords: ["Google Ads agency Pakistan", "Meta ads", "paid advertising Pakistan", "conversion tracking"],
+    secondaryKeywords: [
+      "Google Ads agency Pakistan",
+      "Meta ads",
+      "paid advertising Pakistan",
+      "conversion tracking",
+      "PPC agency Pakistan",
+      "performance marketing agency Pakistan",
+    ],
     intro:
-      "MARKVORO is a Facebook advertising and Google Ads agency in Pakistan running performance-driven paid campaigns engineered to reach the right audience and convert them into customers — with full conversion tracking so every rupee spent is accountable.",
+      "MARKVORO is a Facebook advertising and Google Ads agency in Pakistan — and a performance marketing agency at heart — running PPC and paid social campaigns engineered to reach the right audience and convert them into customers, with full conversion tracking so every rupee spent is accountable.",
     approach: [
       "Every campaign starts with matching the platform to where your buyer actually is in their decision — Google Search Ads for people already looking for what you offer, Meta ads for building awareness and demand before that search happens. We don't default to one platform because it's easier to manage.",
       "Conversion tracking gets set up correctly before any real budget moves, because a campaign is only as good as your ability to measure what it actually produced. From there, budgets shift toward what's proving out and away from what isn't — reviewed against real performance data on a regular cycle, not left running unchanged for months.",
@@ -358,9 +365,9 @@ export const servicePages: ServicePageContent[] = [
           "Audience research, creative testing and campaign structures built around your actual funnel, not boosted posts. Creative is tested in small batches first, so budget scales into what's actually working rather than a single untested campaign.",
       },
       {
-        title: "Google Search Ads",
+        title: "Google Search Ads (PPC)",
         description:
-          "Capturing high-intent searches with tightly matched keywords, ad copy and landing pages. Keywords are matched tightly to intent, so your budget reaches people close to a decision instead of broad, unqualified traffic.",
+          "Pay-per-click campaigns capturing high-intent searches with tightly matched keywords, ad copy and landing pages. Keywords are matched tightly to intent, so your budget reaches people close to a decision instead of broad, unqualified traffic.",
       },
       {
         title: "Display & YouTube Ads",
@@ -398,6 +405,11 @@ export const servicePages: ServicePageContent[] = [
         question: "How soon will we see results from paid ads?",
         answer:
           "Google Search Ads can start driving qualified traffic within days of launch since they capture existing demand; Meta campaigns typically need one to two weeks of real spend data before we can optimize meaningfully. Either way, we'll show you what's actually happening in the account, not a projected result.",
+      },
+      {
+        question: "Do you manage PPC campaigns, or only social ads?",
+        answer:
+          "Both — Google Search Ads is a pay-per-click (PPC) channel, and it's run under the same performance-marketing approach as our Meta campaigns: tight keyword-to-intent matching, real conversion tracking, and budget that moves toward what's actually converting.",
       },
     ],
     relatedSlugs: ["social-media-marketing", "seo"],
