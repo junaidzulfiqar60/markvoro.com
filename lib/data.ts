@@ -455,6 +455,11 @@ export const faqs = [
       "Yes. MARKVORO works with ambitious businesses globally, delivering remote-friendly digital marketing, web development and AI automation services.",
   },
   {
+    question: "Which cities in Pakistan does MARKVORO serve?",
+    answer:
+      "MARKVORO works with businesses across Pakistan — including Lahore, Karachi, Islamabad and Rawalpindi — all served remotely by one team, so you get the same strategy, communication and delivery no matter which city you're in.",
+  },
+  {
     question: "How do I get started?",
     answer:
       "Simply reach out through our contact form, WhatsApp or email. We'll schedule a discovery call to understand your business and recommend the right growth strategy.",

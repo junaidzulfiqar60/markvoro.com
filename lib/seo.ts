@@ -1,6 +1,18 @@
 export const SITE_URL = "https://markvoro.com";
 export const SITE_NAME = "MARKVORO";
 
+// Cities MARKVORO actively serves, confirmed 2026-09-18 — one team serving
+// all of Pakistan remotely, no per-city offices. Schema.org City entities
+// need no street address, so this is safe to publish without one.
+const SERVED_CITIES = ["Lahore", "Karachi", "Islamabad", "Rawalpindi"];
+
+function areaServedSchema() {
+  return [
+    { "@type": "Country", name: "Pakistan" },
+    ...SERVED_CITIES.map((name) => ({ "@type": "City", name })),
+  ];
+}
+
 export function absoluteUrl(path: string): string {
   return new URL(path, SITE_URL).toString();
 }
@@ -23,7 +35,7 @@ export function organizationJsonLd() {
       "MARKVORO is a digital marketing, web development and AI automation agency helping ambitious businesses grow through strategy, creativity and intelligent technology.",
     email: "markvoro08@gmail.com",
     telephone: "+92-318-4340349",
-    areaServed: "PK",
+    areaServed: areaServedSchema(),
     sameAs: [
       "https://www.instagram.com/markvoro610",
       "https://www.facebook.com/share/1EXm8bCUVd/",
@@ -121,9 +133,6 @@ export function serviceJsonLd(options: {
     description: options.description,
     url: absoluteUrl(`/services/${options.slug}`),
     provider: { "@id": `${SITE_URL}/#organization` },
-    areaServed: {
-      "@type": "Country",
-      name: "Pakistan",
-    },
+    areaServed: areaServedSchema(),
   };
 }

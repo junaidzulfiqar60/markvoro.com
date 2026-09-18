@@ -41,6 +41,10 @@ export default function Footer() {
               ambitious businesses grow through strategy, creativity and
               technology.
             </p>
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/50">
+              Serving businesses across Pakistan — including Lahore, Karachi,
+              Islamabad and Rawalpindi — and internationally.
+            </p>
             <p className="mt-4 text-sm font-semibold text-gradient">
               MARKVORO — Grow Beyond Limits.
             </p>
