@@ -299,6 +299,159 @@ It's a strong fit if you get a steady flow of WhatsApp enquiries, answer many of
 
 If you'd like to see what this would look like for your business, our [AI WhatsApp agent](/ai-agents) is built around your services, tone and customers — [our AI automation team](/services/ai-agents) can scope one with you, and you can [get in touch](/contact) to start with a short discovery call.`,
   },
+  {
+    slug: "ai-agent-vs-chatbot",
+    title: "AI Agent vs Chatbot: What's the Difference?",
+    excerpt:
+      "Chatbots and AI agents get used interchangeably, but they behave very differently. Here's what separates them and when a simple chatbot is still enough.",
+    metaDescription:
+      "Chatbots and AI agents get used interchangeably, but they behave very differently. Here's what separates them and when a simple chatbot is still enough.",
+    category: "AI & Automation",
+    tags: ["AI agents", "chatbots", "AI automation"],
+    author: "MARKVORO Team",
+    publishedAt: "2026-09-19T11:00:00.000Z",
+    content: `If you've looked into automating customer conversations, you've probably seen "chatbot" and "AI agent" used as if they meant the same thing. They don't — and the difference decides whether the tool you buy actually helps your customers or just frustrates them with a slightly friendlier menu.
+
+## What a chatbot actually is
+
+A traditional chatbot follows a script. Someone designed a set of options and responses in advance: "Press 1 for prices, 2 for opening hours, 3 to talk to a person." Some newer chatbots let customers type instead of tapping, but underneath they're still matching what was typed against a list of things the designer anticipated. When the message fits, you get a fast, consistent answer. When it doesn't, the bot repeats itself, offers the menu again or gives up.
+
+That isn't a flaw so much as a design limit. A scripted chatbot is only ever as capable as the paths someone built for it.
+
+## What an AI agent is
+
+An AI agent is built to work from your actual business information rather than a fixed script. It's trained on your services, pricing structure, policies and tone, and it can respond to questions in the customer's own words, including ones nobody planned for. Beyond answering, an agent can be given a job: qualify a new enquiry, capture the details your team needs, check availability and confirm a booking, follow up with someone who went quiet, or pass a conversation to a person when it should.
+
+The practical difference is that a chatbot answers from a list, while an agent reasons from what it knows about your business and works toward an outcome.
+
+## Side by side
+
+Ask a chatbot "do you deliver to my area and how long does it take?" and unless someone wrote that exact path, it will likely fall back to a generic menu. Ask an agent trained on your delivery areas and timelines, and it can answer directly, then offer the next step, such as taking the order details or booking a slot.
+
+Ask a chatbot something slightly off-script, like a question that combines two topics, and it tends to break. An agent can handle the combination, because it isn't matching a pattern, it's using your information to compose an answer.
+
+And when a conversation should reach a human, an agent can recognize that and hand it over with the context collected so far, rather than leaving the customer to start again.
+
+## Where a simple chatbot is still fine
+
+None of this makes chatbots useless. If your customers ask a small, predictable set of questions and you want a quick, inexpensive way to answer them, a scripted bot can do the job well. A single-purpose tool, such as a bot that only takes a booking reference and returns a status, doesn't need reasoning at all.
+
+The trouble starts when the range of questions is wider than the script. If your team already spends its day answering many slightly different versions of the same few questions, or if missed and slow replies are costing you enquiries, that's where an agent earns its place.
+
+## How to choose
+
+Ask three questions. How varied are the questions your customers actually send? If they're highly repetitive and narrow, a chatbot may be enough; if they vary, you need something that can handle variety. Does the conversation need to end in an action, like qualifying a lead or confirming a booking, rather than just information? And how much do you trust it to speak for your business? An agent should be trained on your real information and given clear limits on what it can decide, with a clean route to a person for anything sensitive.
+
+## What "agent" should mean in practice
+
+The word gets used loosely, so it's fair to ask what you're actually getting. A genuine agent should be trained on your business, not a generic template with your logo on it. You should be able to see what it knows, how it escalates and where its boundaries are, and it should be built for a specific job rather than promising to do everything. Our overview of [AI agents for small business](/blog/ai-agents-for-small-business) covers what they do in more detail, and our guide to an [AI WhatsApp chatbot for business in Pakistan](/blog/ai-whatsapp-chatbot-business-pakistan) shows how this plays out on the channel most customers already use.
+
+If you're weighing the two for your own business, [our AI automation team](/services/ai-agents) can look at the questions your customers actually ask and tell you honestly which fits — see the [agent types we build](/ai-agents), or [get in touch](/contact) to talk it through.`,
+  },
+  {
+    slug: "automate-customer-support-with-ai",
+    title: "How to Automate Customer Support with AI",
+    excerpt:
+      "A practical guide to automating customer support with AI: what to hand over, what to keep human, and how to get a first version running without a big project.",
+    metaDescription:
+      "A practical guide to automating customer support with AI: what to hand over, what to keep human, and how to get a first version running without a big project.",
+    category: "AI & Automation",
+    tags: ["AI agents", "customer support", "AI automation"],
+    author: "MARKVORO Team",
+    publishedAt: "2026-09-19T12:00:00.000Z",
+    content: `Most customer support work isn't hard, it's repetitive. The same handful of questions arrive again and again, often outside working hours, and every one of them takes a person's attention. That repetition is exactly what AI handles well, which is why customer support is usually the first place small businesses look when they start automating.
+
+## Start by finding what's actually repetitive
+
+Before choosing any tool, spend a week or two noting what your team is asked. You'll usually find that a small number of topics account for most of the volume: prices and packages, delivery or turnaround times, opening hours and locations, how to book or order, policies on returns or cancellations, and the status of something already in progress. Those are candidates for automation. Anything that needs judgment, negotiation or empathy is not.
+
+Writing this list down matters more than it sounds. It becomes the raw material the AI is trained on, and it tells you which questions to automate first.
+
+## Decide the boundaries before you build
+
+The most important design decision isn't which tool to use, it's where the AI stops. Decide in advance which topics it may answer fully, which it should answer only partly before offering a person, and which should go straight to a human, such as complaints, refunds, sensitive situations and anything involving a large or unusual order.
+
+An AI agent should also be honest about what it is and what it doesn't know. When it can't answer confidently, the right behavior is to say so and hand over, not to guess. Getting this wrong is how automated support damages trust.
+
+## Give it real information, not a generic script
+
+Automated support works when the assistant is trained on your actual services, policies and tone. A generic answer about "our return policy" is worse than none. Collect the real wording: how long delivery takes for each area, what a booking involves, what you will and won't refund. The clearer and more specific this material is, the better the answers, and the fewer corrections you'll make later.
+
+## Choose the channel your customers already use
+
+Automation only helps if customers actually reach it. For many businesses in Pakistan that means WhatsApp first, since it's where customers already message you, with a website chat or contact form as a second channel. Meeting people on the channel they already use is far more effective than asking them to move somewhere new. We cover that in detail in our guide to an [AI WhatsApp chatbot for business](/blog/ai-whatsapp-chatbot-business-pakistan).
+
+## Build one focused job first
+
+The most common mistake is trying to automate all of support at once. A better first version has one channel and one clear job, for example answering the ten most common questions and capturing the details of anything else for your team. It's faster to launch, easier to check, and it shows you quickly where the gaps are. Most single-agent builds of this kind go live within two to four weeks from discovery, depending on how much information there is to train on and which tools it needs to connect to.
+
+## Set up the handoff properly
+
+A good handoff is what makes automation feel like service rather than a wall. When the assistant passes a conversation to a person, that person should see what the customer asked and what's been collected, so nobody has to repeat themselves. Decide who receives these handoffs, how quickly they're expected to reply, and what happens outside working hours.
+
+## Measure, then expand
+
+Once it's live, look at real conversations. Which questions was it unable to answer? Where did customers ask for a person? Which answers needed correcting? Use those to improve the information it works from, then add the next job, such as booking, follow-ups or lead qualification. Measuring what it actually did, rather than assuming it works, is what separates a useful assistant from a forgotten one.
+
+## What to expect
+
+Automation reduces repetitive load and shortens first-reply times, especially outside working hours. It doesn't remove the need for people: complex quotes, sensitive complaints and relationship-building still need your team, and they'll have more time for them. To understand what these assistants are and how they differ from simple bots, read [AI agent vs chatbot](/blog/ai-agent-vs-chatbot) and our overview of [AI agents for small business](/blog/ai-agents-for-small-business).
+
+If you'd like to automate part of your own support, [our AI automation team](/services/ai-agents) can help you scope a first version around your real questions — look at the [AI support agent](/ai-agents) we build, or [get in touch](/contact) to start with a discovery call.`,
+  },
+  {
+    slug: "how-to-create-business-website-pakistan",
+    title: "How to Create a Business Website in Pakistan",
+    excerpt:
+      "The practical steps to launch a business website in Pakistan, from choosing a domain and gathering content to design, launch and what to do afterwards.",
+    metaDescription:
+      "The practical steps to launch a business website in Pakistan, from choosing a domain and gathering content to design, launch and what to do afterwards.",
+    category: "Web Development",
+    tags: ["web development", "small business", "how-to"],
+    author: "MARKVORO Team",
+    publishedAt: "2026-09-19T13:00:00.000Z",
+    content: `Getting a business website live is less complicated than it looks, but the order you do things in matters. Most delays and cost overruns come from starting the design before the basics are decided. Here's the sequence that avoids that.
+
+## 1. Decide what the website is for
+
+Start with the job the site has to do. Is it there to bring in enquiries, take orders, show your work, take bookings, or simply prove you're a real business? Pick one main goal and one or two supporting ones. That decision shapes everything else: which pages you need, what the homepage says first and what a visitor should do next.
+
+## 2. Choose your domain name
+
+Your domain is your address online, so keep it short, easy to say aloud and easy to spell. Use your business name where you can, and check that the matching social media handles are available. Register it in your own name or your business's name, and keep the login details yourself, so you always control it regardless of who builds the site.
+
+## 3. Plan the pages
+
+Most business sites need a small set of pages: a home page that says what you do and for whom, pages for your main services or products, an about page that shows who is behind the business, and a contact page with clear ways to reach you. Add pages only when they have a purpose. A short, clear site usually converts better than a large, vague one.
+
+## 4. Gather your content before design starts
+
+This is the step most people skip, and it's the one that causes the most delay. Prepare the text for each page, your logo and brand colours, and real photos of your work, team or products. Placeholder content leads to a site that looks finished but says nothing. If writing isn't your strength, a copywriter or your agency can help, but the information about your services, pricing approach and policies has to come from you.
+
+## 5. Choose how it will be built
+
+Broadly, you can use a website builder, a template on a content management system, or a custom-built site. Builders are quick and inexpensive for very simple needs. Custom builds suit businesses that need specific functionality, stronger performance or a design that isn't a template with your logo swapped in. The right choice depends on your goal, your budget and how much you'll want to change over time. Our guide to [what a website costs in Pakistan](/blog/website-cost-pakistan-2026) explains what moves the price.
+
+## 6. Design for phones first
+
+Most of your visitors will arrive on a mobile phone, so design for a small screen first and scale up. Keep the main action, whether that's calling, messaging on WhatsApp, booking or buying, visible without scrolling and easy to tap. Make sure pages load quickly, because slow sites lose visitors before they've read anything.
+
+## 7. Build in the basics of search visibility
+
+A site that no one can find doesn't do its job. From the start, give every page a clear title and description, use a sensible heading structure, describe images properly and make sure the site loads fast. These fundamentals are far cheaper to build in than to add later. Our [SEO checklist for small businesses](/blog/seo-checklist-small-business-pakistan) walks through them.
+
+## 8. Test before you launch
+
+Check every page and form on a phone and a computer. Send yourself a test enquiry and confirm it actually arrives. Read everything again for mistakes, and confirm that contact details, prices and policies are correct. A short review with checkpoints along the way, rather than a first look at launch, is what prevents nasty surprises.
+
+## 9. Launch, then keep going
+
+Going live is the start, not the end. Connect the site to Google Search Console so you can see how it performs in search, track where enquiries come from, and plan regular updates. Add new content over time, and revisit the site as your services change. For most business websites, the period from a first discovery call to launch is a matter of weeks, depending on scope, with e-commerce and custom functionality taking longer.
+
+## Doing it yourself or with help
+
+Plenty of small sites can be built without an agency, especially simple ones. Working with a team makes sense when you need custom design, an online store, booking or lead-management features, or a site built to perform well in search from day one. If that's you, [our web development team](/services/web-development) can scope it properly after a short discovery call — see how we [scope and price work](/pricing), or [get in touch](/contact) and tell us what you're building.`,
+  },
 ];
 
 export function getStaticBlogPost(slug: string): BlogPost | undefined {
